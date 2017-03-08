@@ -1,5 +1,5 @@
 /*
-	Capitulo 4 de Arduino desde cero en Español
+	Capitulo 4 de Arduino desde cero en EspaÃ±ol.
 	Segundo programa que maneja el brillo del LED mediante el potenciometro.
 
 	Autor: bitwiseAr  
