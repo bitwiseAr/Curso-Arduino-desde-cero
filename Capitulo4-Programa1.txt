@@ -1,5 +1,5 @@
 /*
-	Capitulo 4 de Arduino desde cero en Español
+	Capitulo 4 de Arduino desde cero en Español.
 	Primer programa que enciende y apaga de forma progresiva un LED mediante PWM.
 
 	Autor: bitwiseAr  
