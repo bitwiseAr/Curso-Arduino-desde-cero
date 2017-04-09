@@ -1,7 +1,7 @@
 /*
-	Capitulo 9 de Arduino desde cero en Español
+	Capitulo 9 de Arduino desde cero en EspaÃ±ol
 	Programa que permite conectar un teclado matricial de membrana de 4x4 y realizar
-	un simple control de acceso con contraseña. Debe instalarse la libreria Keypad.
+	un simple control de acceso con contraseÃ±a. Debe instalarse la libreria Keypad.
 
 	Autor: bitwiseAr  
 
@@ -26,7 +26,7 @@ Keypad teclado = Keypad(makeKeymap(keys), pinesFilas, pinesColumnas, FILAS, COLU
 
 char TECLA;				// almacena la tecla presionada
 char CLAVE[7]; 				// almacena en un array 6 digitos ingresados
-char CLAVE_MAESTRA[7] = "123456"; 	// almacena en un array la contraseña maestra
+char CLAVE_MAESTRA[7] = "123456"; 	// almacena en un array la contraseÃ±a maestra
 byte INDICE = 0;			// indice del array
 
 	
@@ -39,20 +39,21 @@ void loop()
 {
   
 
-  TECLA = teclado.getKey();		// obtiene teclad presionada y asigna a variable
-  if (TECLA) 				// compruebe que se haya presionado una tecla
+  TECLA = teclado.getKey();		// obtiene tecla presionada y asigna a variable
+  if (TECLA) 				// comprueba que se haya presionado una tecla
   {
     CLAVE[INDICE] = TECLA; 		// almacena en array la tecla presionada
     INDICE++;				// incrementa indice en uno
-    Serial.print(TECLA);		// enviar a monitor serial la tecla presionada
+    Serial.print(TECLA);		// envia a monitor serial la tecla presionada
   }
 
-  if(INDICE == 6) 			// si ya se almacenaron los 6 digitos                              {
+  if(INDICE == 6) 			// si ya se almacenaron los 6 digitos                              
+  {
 
     if(!strcmp(CLAVE, CLAVE_MAESTRA))   // compara clave ingresada con clave maestra
-      Serial.println(" Correcta");	// imprimi en monitor serial que es correcta la clave
+      Serial.println(" Correcta");	// imprime en monitor serial que es correcta la clave
     else
-      Serial.println(" Incorrecta");	// imprimi en monitor serial que es incorrecta la clave
+      Serial.println(" Incorrecta");	// imprime en monitor serial que es incorrecta la clave
 
     INDICE = 0;
   }
