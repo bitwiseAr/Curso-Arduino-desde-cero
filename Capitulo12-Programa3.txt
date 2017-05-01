@@ -1,0 +1,37 @@
+/*
+	Capitulo 12 de Arduino desde cero en Español.
+	Programa que enciende un LED RGB pasando por tres colores personalizados cada dos segundos
+	utilizando una funcion para simplificar el codigo.
+	LED RGB de cátodo común con resistencias de 330 ohms en serie con cada ánodo.
+
+	Autor: bitwiseAr  
+
+*/
+
+int LEDROJO = 9;		// pin 9 a anodo LED rojo
+int LEDVERDE = 10;		// pin 10 a anodo LED verde
+int LEDAZUL = 11;		// pin 11 a anodo LED azul
+
+void setup(){
+  pinMode(LEDROJO, OUTPUT);	// todos los pines como salida
+  pinMode(LEDVERDE, OUTPUT);
+  pinMode(LEDAZUL, OUTPUT);
+}
+
+void loop(){
+  miColor(255, 255, 0);		// amarillo
+  delay(2000);
+
+  miColor(0, 255, 255);		// celeste
+  delay(2000);
+
+  miColor(255, 118, 192);	// rosado
+  delay(2000);
+  
+}
+
+void miColor(int rojo, int verde, int azul){	// funcion a medida
+  analogWrite(LEDROJO, rojo);
+  analogWrite(LEDVERDE, verde);
+  analogWrite(LEDAZUL, azul);
+}
