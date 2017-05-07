@@ -1,0 +1,23 @@
+/*
+	Capitulo 13 de Arduino desde cero en Español.
+	Programa que utiliza la salida analogica A0 de KY-038 (o KY-037) para enviar el
+	valor leido por monitor serial.
+	Autor: bitwiseAr  
+
+*/
+
+int MIC = 0;				// salida A0 de sensor a entrada analogica A0
+int valor;				// variable para almacenar valor leio de A0
+
+void setup(){
+// entradas analogicas no requieren inicializacion
+  Serial.begin(9600);			// inicializacion de comunicacion serie
+}
+
+
+void loop(){
+  valor = analogRead(MIC);		// lee valor de entrada analogica
+  Serial.println(valor);		// escribe valor en monitor serial
+  delay(500);				// demora de medio segundo entre lecturas
+
+}
