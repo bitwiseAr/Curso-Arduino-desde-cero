@@ -1,0 +1,35 @@
+/*
+	Capitulo 15 de Arduino desde cero en Español.
+	Programa que utiliza dos modulos KY-027 en extremos de protoboard con sensores
+	a 45 grados para encender sus propios LEDs integrados al inclinarse.
+
+	Autor: bitwiseAr  
+
+*/
+
+int SENSOR_DERECHO = 2;			// pin S de modulo derecho a pin 2
+int LED_DERECHO = 3;			// pin L de modulo derecho a pin 3
+
+int SENSOR_IZQUIERDO = 4;		// pin S de modulo izquierdo a pin 4
+int LED_IZQUIERDO = 5;			// pin L de modulo derecho a pin 5
+
+int ESTADO_DERECHO;			// variable almacena valor leido de pin 2
+int ESTADO_IZQUIERDO;			// variable almacena valor leido de pin 4
+
+void setup(){
+  pinMode(SENSOR_DERECHO, INPUT);	// pin 2 como entrada
+  pinMode(SENSOR_IZQUIERDO, INPUT);	// pin 4 como entrada
+  pinMode(LED_DERECHO, OUTPUT);		// pin 3 como salida
+  pinMode(LED_IZQUIERDO, OUTPUT);	// pin 5 como salida
+}
+
+
+void loop(){
+  ESTADO_DERECHO = digitalRead(SENSOR_DERECHO);		// lee valor de pin 2
+  digitalWrite(LED_DERECHO, ESTADO_DERECHO);		// escribe valor en LED (pin 3)
+  delay(100);						// demora para evitar parpadeo de LED
+
+  ESTADO_IZQUIERDO = digitalRead(SENSOR_IZQUIERDO);	// lee valor de pin 4
+  digitalWrite(LED_IZQUIERDO, ESTADO_IZQUIERDO);	// escribe valor en LED (pin 5)
+  delay(100);						// demora para evitar parpadeo de LED
+}

@@ -1,0 +1,24 @@
+/*
+	Capitulo 15 de Arduino desde cero en Español.
+	Programa que utiliza el modulo KY-017 para encender un LED cuando el sensor
+	por interruptor de mercurio abre el circuito (uno logico).
+
+	Autor: bitwiseAr  
+
+*/
+
+int SENSOR = 2;			// pin S de modulo a pin 2
+int LED = 3;			// anodo de LED a pin 3
+int ESTADO;			// variable almacena valor leido de pin 2
+
+void setup(){
+  pinMode(SENSOR, INPUT);	// pin 2 como entrada
+  pinMode(LED, OUTPUT);		// pin 3 como salida
+}
+
+
+void loop(){
+  ESTADO = digitalRead(SENSOR);	// lee valor de pin 2
+  digitalWrite(LED, ESTADO);	// escribe valor leido en pin 3
+  delay(100);			// demora breve para evitar parpadeo de LED
+}
