@@ -1,0 +1,28 @@
+/*
+	Capitulo 18 de Arduino desde cero en Español.
+	Programa que utiliza el modulo sensor de campo magnetico KY-035 para mostrar
+	mediante el monitor serial la intensidad de campo magnetico leido mediante 
+        la entrada analogica A0. Si lee valores bajos o altos signfica campo detectado y lo
+	indica escribiendo en el monitor serial.
+
+	Autor: bitwiseAr  
+
+*/
+
+
+int SENSOR;			// variable para almacenar valor leido de A0
+
+void setup(){
+  Serial.begin(9600);		// inicializa comunicacion serie a 9600 bps
+  // entradas analógicas no requieren inicialización
+}
+
+
+void loop(){
+  SENSOR = analogRead(A0);		// lee y almacena valor leido de entrada analogica A0
+  if (SENSOR < 450 || SENSOR > 600){	// valores bajos o altos implican campo detectado
+  Serial.print("Campo detectado: ");	// imprime leyenda si detecta campo
+  }
+  Serial.println(SENSOR);		// imprime en monitor serial el valor leido
+  delay(500);				// demora de medio segundo
+}
