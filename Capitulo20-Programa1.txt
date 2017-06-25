@@ -1,5 +1,5 @@
 /*
-	Capitulo 20 de Arduino desde cero en Español.
+	Capitulo 20 de Arduino desde cero en EspaÃ±ol.
 	Programa que utiliza el modulo controlador de motor L298N para hacer girar dos
 	motores hacia adelante y asi verificar la correcta conexion.
 
@@ -29,7 +29,7 @@ void loop(){
   digitalWrite(IN1, LOW);	// IN1 en cero logico
   digitalWrite(IN2, HIGH);	// IN2 en uno logico
 
-  digitalWrite(ENB, HIGH);	// ENB en alto habilita motor A
+  digitalWrite(ENB, HIGH);	// ENB en alto habilita motor B
   digitalWrite(IN3, LOW);	// IN3 en cero logico
   digitalWrite(IN4, HIGH);	// IN4 en uno logico
   delay(3000);			// demora de 3 seg.
