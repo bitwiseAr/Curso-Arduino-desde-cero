@@ -1,5 +1,5 @@
 /*
-	Capitulo 23 de Arduino desde cero en Español.
+	Capitulo 23 de Arduino desde cero en EspaÃ±ol.
 	Programa que utiliza el sensor de temperatura analogico LM35 para tomar 5
 	muestras de temperatura y mostrar el promedio de las mismas en el monitor serial
 	de manera de evitar variaciones indeseables.
@@ -13,8 +13,8 @@ float TEMPERATURA;	// valor de temperatura en grados centigrados
 float SUMA;		// valor de la suma de las 5 lecturas de temperatura
 
 void setup(){
-  Serial.begin(9600);	// inicalizacion de comunicacion serie a 9600 bps
-  // entradas analógicas no requieren inicialización
+  Serial.begin(9600);	// inicializacion de comunicacion serie a 9600 bps
+  // entradas analÃ³gicas no requieren inicializaciÃ³n
 }
 
 void loop(){
