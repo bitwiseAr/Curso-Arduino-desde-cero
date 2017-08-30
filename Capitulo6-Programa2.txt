@@ -1,5 +1,5 @@
 /*
-	Capitulo 6 de Arduino desde cero en Español
+	Capitulo 6 de Arduino desde cero en EspaÃ±ol
 	Segundo programa que lee el valor del potenciometro conectado a entrada A0
 	y lo convierte a valor de angulo para mover al servo hacia el mismo.
 
@@ -11,8 +11,8 @@
 
 Servo servo1;			// crea objeto
 
-int PINSERVO = 2;		// pin 2 conectado a señal del servo
-int PULSOMIN = 100;		// pulso minimo en microsegundos
+int PINSERVO = 2;		// pin 2 conectado a seÃ±al del servo
+int PULSOMIN = 1000;		// pulso minimo en microsegundos
 int PULSOMAX = 2000;		// pulso maximo en microsegundos
 int VALORPOT;			// variable para almacenar valor leido en entrada A0
 int ANGULO;			// valor de angulo a cargar en el servo
