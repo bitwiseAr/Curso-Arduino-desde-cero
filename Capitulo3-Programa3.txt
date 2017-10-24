@@ -1,5 +1,5 @@
 /*
-	Capitulo 3 de Arduino desde cero en Español
+	Capitulo 3 de Arduino desde cero en EspaÃ±ol
 	Tercer programa que al presionarse el pulsador enciende LED por 5 segundos y luego
 	apaga solo.
 
@@ -10,7 +10,6 @@
 
 int PULSADOR = 2; 
 int LED=3; 
-int ESTADO=LOW; 
 
 void setup(){ 
 
