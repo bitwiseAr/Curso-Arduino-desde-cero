@@ -47,7 +47,7 @@ void loop()
     Serial.print(TECLA);		// envia a monitor serial la tecla presionada
   }
 
-  if(INDICE == 6) 			// si ya se almacenaron los 6 digitos                              
+  if(INDICE == 6) 			// si ya se almacenaron los 6 digitos
   {
 
     if(!strcmp(CLAVE, CLAVE_MAESTRA))   // compara clave ingresada con clave maestra
