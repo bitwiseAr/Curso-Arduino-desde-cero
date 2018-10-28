@@ -1,0 +1,72 @@
+/*
+	Capitulo 42 de Arduino desde cero en Español.
+	Programa que permite encender o apagar un LED conectado al pin digital numero 2
+	de Arduino obteniendo el valor desde el encabezado de la peticion de un 
+	navegador web y respondiendo con un texto acorde al estado establecido.
+	Placa Wemos D1 Mini (basada en ESP-12F)
+	Referirse al capitulo 41 del curso para mas informacion sobre los comandos AT
+	utilizados.
+
+	Autor: bitwiseAr  
+
+*/
+
+#include <SoftwareSerial.h>	// libreria que permite establecer pines digitales
+				// para comunicacion serie (UART)
+
+SoftwareSerial D1(10, 11); 	// pin 10 como RX, pin 11 como TX
+
+#define LED  2			// constante LED con pin numero 2
+
+void setup()
+{
+ D1.begin(9600);		// incializa a 9600 bps la comunicacion con D1 Mini
+ 
+ pinMode(LED,OUTPUT);		// pin numero 2 como salida
+ 
+ D1.println("AT+CWMODE=1");		// establece modo cliente (station)
+ delay(1000);
+ D1.println("AT+CWJAP=\"Identificador\",\"Password\"");		// unirse a la red local
+ delay(10000);
+ D1.println("AT+CIPMUX=1");		// establece multiples conexiones en simultaneo
+ delay(1000);
+ D1.println("AT+CIPSERVER=1,80");	// inicia servidor web en puerto 80
+ delay(1000);
+}
+
+void loop()
+{
+ if(D1.available()){			// si hay datos disponibles desde el modulo
+  delay(1000);
+ if(D1.find("+IPD,")){			// busca por cadena +IPD,
+  int conexion = D1.read()-48;		// lee el byte, resta 48 y almacena en variable conexion
+ if (D1.find("led=")){			// busca por cadena led=
+  int lectura = D1.read()-48;		// lee el byte, resta 48 y almacena en variable lectura
+ 
+ String pagina = "<!doctype html><html><head></head><body>";// crea cadena pagina con etiquetas HTML
+ if (lectura == 1){			// si se solicita encender el LED, lectura = 1
+  digitalWrite(LED, HIGH);		// envia un uno logico a pin 2
+  pagina += "<h1>LED = encendido</h1></body></html>";	// agrega a la cadena pagina el texto y HTML
+ }
+ else if (lectura == 0){ 		// si se solicita apagr el LED, lectura = 0
+  digitalWrite(LED, LOW);		// envia un cero logico a pin 2
+  pagina += "<h1>LED = apagado</h1></body></html>";	// agrega a la cadena pagina el texto y HTML
+  }
+ 
+ String enviar = "AT+CIPSEND=";		// crea cadena enviar con comando AT para enviar datos
+ enviar+=conexion;			// agrega a la cadena el numero de conexion
+ enviar+=",";				// agrega a la cadena una coma
+ enviar+=pagina.length();		// agrega a la cadena la longitud de la cadena pagina
+ D1.println(enviar);			// envia cadena enviar por conexion serie al modulo
+ delay(1000);
+ D1.println(pagina);			// envia cadena pagina por conexion serie al modulo
+ delay(1000);
+ 
+ String cerrar = "AT+CIPCLOSE=";	// crea cadena cerrar con comando AT para cerrar conexion
+ cerrar+=conexion;			// agrega a cadena cerrar el numero de conexion
+ D1.println(cerrar);			// envia la cadena cerrar por conexion serie al modulo
+ delay(2000);
+ }
+ }
+ }
+}
