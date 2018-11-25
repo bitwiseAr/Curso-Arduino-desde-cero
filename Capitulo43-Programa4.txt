@@ -1,0 +1,202 @@
+/*
+	Capitulo 43 de Arduino desde cero en Español.
+	Programa que muestra una flecha hacia arriba con animacion de movimiento en 9 cuadros.
+
+	Autor: bitwiseAr  
+
+*/
+
+#include "LedControl.h" 		// incluye libreria LedControl
+
+LedControl lc=LedControl(11,13,10,1);	// crea objeto
+
+#define demora 250			// constante demora con valor de 250
+
+byte flecha_arriba_1[8] = {		// array con primer cuadro de animacion de flecha
+  B00000000,
+  B00011000,
+  B00111100,
+  B01111110,
+  B11011011,
+  B00011000,
+  B00011000,
+  B00011000
+};
+
+byte flecha_arriba_2[8] = {		// array con segundo cuadro de animacion de flecha
+  B00011000,
+  B00111100,
+  B01111110,
+  B11011011,
+  B00011000,
+  B00011000,
+  B00011000,
+  B00000000
+};
+
+byte flecha_arriba_3[8] = {		// array con tercer cuadro de animacion de flecha
+  B00111100,
+  B01111110,
+  B11011011,
+  B00011000,
+  B00011000,
+  B00011000,
+  B00000000,
+  B00000000
+};
+
+byte flecha_arriba_4[8] = {		// array con cuarto cuadro de animacion de flecha
+  B01111110,
+  B11011011,
+  B00011000,
+  B00011000,
+  B00011000,
+  B00000000,
+  B00000000,
+  B00011000
+};
+
+byte flecha_arriba_5[8] = {		// array con quinto cuadro de animacion de flecha
+  B11011011,
+  B00011000,
+  B00011000,
+  B00011000,
+  B00000000,
+  B00000000,
+  B00011000,
+  B00111100
+};
+
+byte flecha_arriba_6[8] = {		// array con sexto cuadro de animacion de flecha
+  B00011000,
+  B00011000,
+  B00011000,
+  B00000000,
+  B00000000,
+  B00011000,
+  B00111100,
+  B01111110
+};
+
+byte flecha_arriba_7[8] = {		// array con septimo cuadro de animacion de flecha
+  B00011000,
+  B00011000,
+  B00000000,
+  B00000000,
+  B00011000,
+  B00111100,
+  B01111110,
+  B11011011
+};
+
+byte flecha_arriba_8[8] = {		// array con octavo cuadro de animacion de flecha
+  B00011000,
+  B00000000,
+  B00000000,
+  B00011000,
+  B00111100,
+  B01111110,
+  B11011011,
+  B00011000
+};
+
+byte flecha_arriba_9[8] = {		// array con noveno cuadro de animacion de flecha
+  B00000000,
+  B00000000,
+  B00011000,
+  B00111100,
+  B01111110,
+  B11011011,
+  B00011000,
+  B00011000
+};
+
+void setup() {
+  lc.shutdown(0,false);			// enciende la matriz
+  lc.setIntensity(0,4);			// establece brillo
+  lc.clearDisplay(0);			// blanquea matriz
+}
+
+void loop(){
+  mostrar_1();				// llama funcion mostrar_1
+  delay(demora);			// demora
+  mostrar_2();				// llama funcion mostrar_2
+  delay(demora);			// demora
+  mostrar_3();				// llama funcion mostrar_3
+  delay(demora);			// demora
+  mostrar_4();				// llama funcion mostrar_4
+  delay(demora);			// demora
+  mostrar_5();				// llama funcion mostrar_5
+  delay(demora);			// demora
+  mostrar_6();				// llama funcion mostrar_6
+  delay(demora);			// demora
+  mostrar_7();				// llama funcion mostrar_7
+  delay(demora);			// demora
+  mostrar_8();				// llama funcion mostrar_8
+  delay(demora);			// demora
+  mostrar_9();				// llama funcion mostrar_9
+  delay(demora);			// demora
+}
+
+void mostrar_1(){			// funcion mostrar_1
+  for (int i = 0; i < 8; i++)  		// bucle itera 8 veces por el array
+  {
+    lc.setRow(0,i,flecha_arriba_1[i]);	// establece fila con valor de array flecha_arriba_1
+  }
+}
+
+void mostrar_2(){			// funcion mostrar_2
+  for (int i = 0; i < 8; i++) 		// bucle itera 8 veces por el array 
+  {
+    lc.setRow(0,i,flecha_arriba_2[i]);	// establece fila con valor de array flecha_arriba_2
+  }
+}
+
+void mostrar_3(){			// funcion mostrar_3
+  for (int i = 0; i < 8; i++)  		// bucle itera 8 veces por el array
+  {
+    lc.setRow(0,i,flecha_arriba_3[i]);	// establece fila con valor de array flecha_arriba_3
+  }
+}
+
+void mostrar_4(){			// funcion mostrar_4
+  for (int i = 0; i < 8; i++) 		// bucle itera 8 veces por el array 
+  {
+    lc.setRow(0,i,flecha_arriba_4[i]);	// establece fila con valor de array flecha_arriba_4
+  }
+}
+
+void mostrar_5(){			// funcion mostrar_5
+  for (int i = 0; i < 8; i++) 		// bucle itera 8 veces por el array 
+  {
+    lc.setRow(0,i,flecha_arriba_5[i]);	// establece fila con valor de array flecha_arriba_5
+  }
+}
+
+void mostrar_6(){			// funcion mostrar_6
+  for (int i = 0; i < 8; i++) 		// bucle itera 8 veces por el array 
+  {
+    lc.setRow(0,i,flecha_arriba_6[i]);	// establece fila con valor de array flecha_arriba_6
+  }
+}
+
+void mostrar_7(){			// funcion mostrar_7
+  for (int i = 0; i < 8; i++) 		// bucle itera 8 veces por el array 
+  {
+    lc.setRow(0,i,flecha_arriba_7[i]);	// establece fila con valor de array flecha_arriba_7
+  }
+}
+
+void mostrar_8(){			// funcion mostrar_8
+  for (int i = 0; i < 8; i++) 		// bucle itera 8 veces por el array 
+  {
+    lc.setRow(0,i,flecha_arriba_8[i]);	// establece fila con valor de array flecha_arriba_8
+  }
+}
+
+void mostrar_9(){			// funcion mostrar_9
+  for (int i = 0; i < 8; i++) 		// bucle itera 8 veces por el array 
+  {
+    lc.setRow(0,i,flecha_arriba_9[i]);	// establece fila con valor de array flecha_arriba_9
+  }
+}
