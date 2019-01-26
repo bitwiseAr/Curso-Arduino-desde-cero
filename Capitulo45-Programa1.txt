@@ -1,0 +1,22 @@
+/*
+	Capitulo 45 de Arduino desde cero en Español.
+	Programa que enciende durante un segundo y apaga por dos segundos una 
+	lampara de auto de 12 Volts y 15 Watts conectada a un modulo MOSFET IRF520N
+	con alimentacion externa de 12 vots provista por bateria o fuente.
+
+	Autor: bitwiseAr  
+
+*/
+
+#define MOSFET 3		// constante MOSFET con valor 3, pin SIG del modulo
+
+void setup(){
+  pinMode(MOSFET, OUTPUT);	// pin 3 como salida    
+}
+
+void loop(){
+  digitalWrite(MOSFET, HIGH);	// envia nivel alto a pin 3
+  delay(1000);			// demora de 1 segundo
+  digitalWrite(MOSFET, LOW);	// envia nivel bajo a pin 3
+  delay(2000);			// demora de 2 segundos
+}
