@@ -1,0 +1,28 @@
+/*
+	Capitulo 39 de Arduino desde cero en Español.
+	Programa que obtiene la capacidad de memoria EEPROM, lee valor por defecto en direccion 0
+	y luego escribe el numero 39 en dicha direccion.
+
+	Autor: bitwiseAr  
+
+*/
+
+#include <EEPROM.h>				// libreria EEPROM
+
+void setup() {
+  Serial.begin(9600);				// inicializa monitor serie a 9600 bps
+  
+  Serial.print("Capacidad de memoria: ");	// imprime texto 
+  Serial.println( EEPROM.length() );		// obtiene capacidad de memoria EEPROM y muestra
+  Serial.println(" ");				// linea en blanco
+
+  Serial.print("Valor almacenado en direccion 0: ");	// imprime texto
+  Serial.println( EEPROM.read(0) );      		// lee direccion cero y muestra
+
+  Serial.print("Almacenando numero 39 en direccion 0");	// imprime texto
+  EEPROM.write(0, 39);                  		// escribe en direccion cero el numero 39
+}
+
+void loop() {					// funcion loop() declarada pero sin contenido
+  // nada por aqui
+}

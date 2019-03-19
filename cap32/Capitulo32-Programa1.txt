@@ -1,0 +1,19 @@
+/*
+	Capitulo 32 de Arduino desde cero en Español.
+	Simple programa de parpadeo de LED interno L a intervalos de 1 segundo para verificar
+	la correcta carga en Pro Mini mediante conversor USB-TTL.
+
+	Autor: bitwiseAr  
+
+*/
+
+void setup() {
+  pinMode(13, OUTPUT);		// pin 13 como salida
+}
+
+void loop() {
+  digitalWrite(13, HIGH);	// nivel alto a pin 13 enciende LED L
+  delay(1000);			// demora de 1 segundo
+  digitalWrite(13, LOW);	// nivel bajo a pin 13 apaga LED L
+  delay(1000);			// demora de 1 segundo
+}

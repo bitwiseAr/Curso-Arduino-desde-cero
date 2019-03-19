@@ -1,0 +1,33 @@
+/*
+	Capitulo 35 de Arduino desde cero en Español.
+	Simple programa que muestra en la pantalla de un modulo LCD 1602A mediante adaptador
+	LCD I2C un texto y realiza un desplazamiento a izquierda. Adaptador basado en
+	circuito integrado PCF8574 y libreria LiquidCrystal_I2C descargada desde:
+	https://bitbucket.org/fmalpartida/new-liquidcrystal/downloads/
+
+	Autor: bitwiseAr  
+
+*/
+
+#include <Wire.h>			// libreria de comunicacion por I2C
+#include <LCD.h>			// libreria para funciones de LCD
+#include <LiquidCrystal_I2C.h>		// libreria para LCD por I2C
+
+LiquidCrystal_I2C lcd (0x27, 2, 1, 0, 4, 5, 6, 7); // DIR, E, RW, RS, D4, D5, D6, D7
+
+void setup()
+{
+    lcd.setBacklightPin(3,POSITIVE);	// puerto P3 de PCF8574 como positivo
+    lcd.setBacklight(HIGH);		// habilita iluminacion posterior de LCD
+    lcd.begin(16, 2);			// 16 columnas por 2 lineas para LCD 1602A
+    lcd.clear();			// limpia pantalla
+}
+
+void loop()
+{
+    lcd.setCursor(2, 0);		// ubica cursor en columna 2 y linea 0
+    lcd.print("Prueba scroll");		// escribe texto
+    lcd.scrollDisplayLeft();		// funcion que desplaza de a un caracter por vez hacia
+					// la izquierda
+    delay(1000);			// demora de un segundo
+}

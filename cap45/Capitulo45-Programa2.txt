@@ -1,0 +1,29 @@
+/*
+	Capitulo 45 de Arduino desde cero en Español.
+	Programa que enciende de forma progresiva y luego apaga de la misma forma una 
+	lampara de auto de 12 Volts y 15 Watts conectada a un modulo MOSFET IRF520N
+	con alimentacion externa de 12 vots provista por bateria o fuente utilizando 
+	la capacidad PWM del pin digital 3
+
+	Autor: bitwiseAr  
+
+*/
+
+#define MOSFET 3		// constante MOSFET con valor 3, pin SIG del modulo
+int BRILLO;			// variable para almacenar valores PWM
+
+void setup(){
+  pinMode(MOSFET, OUTPUT);	// pin 3 como salida    
+}
+
+void loop(){
+for (BRILLO = 0; BRILLO < 256; BRILLO++){	// bucle incrementa BRILLO 
+  analogWrite(MOSFET, BRILLO);    		// PWM en pin 3 con valor de BRILLO
+  delay(25);        				// demora de 25 mseg.
+  }
+
+for (BRILLO = 255; BRILLO >= 0; BRILLO--){	// bucle decrementa BRILLO 
+  analogWrite(MOSFET, BRILLO);   		// PWM en pin 3 con valor de BRILLO 
+  delay(25);    				// demora de 25 mseg.    
+  }
+}

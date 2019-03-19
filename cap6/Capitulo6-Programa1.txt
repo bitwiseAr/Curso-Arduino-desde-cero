@@ -1,0 +1,30 @@
+/*
+	Capitulo 6 de Arduino desde cero en Español
+	Primer programa que mueve el servomotor de 0 a 180 grados cada cinco segundos y
+	se usa para determinar el valor practico del pulso minimo y maximo.
+
+	Autor: bitwiseAr  
+
+*/
+
+#include <Servo.h>  		// incluye libreria de Servo
+
+Servo servo1;			// crea objeto
+
+int PINSERVO = 2;		// pin 2 conectado a señal del servo
+int PULSOMIN = 1000;		// pulso minimo en microsegundos
+int PULSOMAX = 2000;		// pulso maximo en microsegundos
+
+
+void setup()
+{
+  servo1.attach(PINSERVO, PULSOMIN, PULSOMAX);	// inicializacion de servo
+}
+
+void loop()
+{
+  servo1.write(0);		// ubica el servo a 0 grados
+  delay(5000); 			// espera de 5 seg.
+  servo1.write(180);		// ubica el servo a 180 grados
+  delay(5000);			// espera de 5 seg.
+}

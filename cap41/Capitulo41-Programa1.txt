@@ -1,0 +1,27 @@
+/*
+	Capitulo 41 de Arduino desde cero en Español.
+	Programa que permite establecer una comunicacion con el modulo Wemos D1 Mini
+	mediante UART (TX, RX) para enviarle comandos AT por monitor serie y ver respuestas.
+
+	Autor: bitwiseAr  
+
+*/
+
+#include <SoftwareSerial.h>	// libreria que permite establecer pines digitales
+				// para comunicacion serie
+
+SoftwareSerial D1(10, 11); 	// pin 10 como RX, pin 11 como TX
+
+void setup(){
+  Serial.begin(9600);		// inicializa monitor serie a 9600 bps
+  D1.begin(9600);		// inicializa D1 a 9600 bps
+}
+
+void loop(){
+if (D1.available())     	// si hay informacion disponible desde el modulo
+   Serial.write(D1.read()); 	// lee desde el modulo y envia a monitor serie
+
+if (Serial.available())   	// si hay informacion disponible desde el monitor serie
+   D1.write(Serial.read()); 	// lee monitor serie y envia al modulo
+
+}

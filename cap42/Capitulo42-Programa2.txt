@@ -1,0 +1,73 @@
+/*
+	Capitulo 42 de Arduino desde cero en Español.
+	Programa que permite obtener temperatura y humedad de un sensor DHT11 conectado a pin
+	digital numero 4 y mostrar los datos en una pagina web. Requiere DHT Sensor Library 
+	y Unified Sensor by Adafruit
+	Placa Wemos D1 Mini (basada en ESP-12F)
+	Referirse al capitulo 41 del curso para mas informacion sobre los comandos AT
+	utilizados.
+
+	Autor: bitwiseAr  
+
+*/
+
+#include <SoftwareSerial.h>	// libreria que permite establecer pines digitales
+				// para comunicacion serie (UART)
+#include <DHT.h>		// libreria DHT Sensor by Adafruit
+#include <DHT_U.h>		// libreria Unified Sensor by Adafruit
+
+SoftwareSerial D1(10, 11); 	// pin 10 como RX, pin 11 como TX
+
+#define SENSOR  4		// constante SENSOR con pin numero 4
+DHT dht(SENSOR, DHT11);		// crea objeto del tipo DHT indicando pin y modelo
+
+void setup()
+{
+ D1.begin(9600);		// incializa a 9600 bps la comunicacion con D1 Mini
+ 
+ D1.println("AT+CWMODE=1");		// establece modo cliente (station)
+ delay(1000);
+ D1.println("AT+CWJAP=\"Identificador\",\"Password\"");		// unirse a la red local
+ delay(10000);
+ D1.println("AT+CIPMUX=1");		// establece multiples conexiones en simultaneo
+ delay(1000);
+ D1.println("AT+CIPSERVER=1,80");	// inicia servidor web en puerto 80
+ delay(1000);
+}
+
+void loop()
+{
+ if(D1.available()){			// si hay datos disponibles desde el modulo
+  delay(1000);
+ if(D1.find("+IPD,")){			// busca por cadena +IPD,
+  int conexion = D1.read()-48;		// lee el byte, resta 48 y almacena en variable conexion
+ if (D1.find("led=")){			// busca por cadena led=
+  int lectura = D1.read()-48;		// lee el byte, resta 48 y almacena en variable lectura
+ 
+ String pagina = "<!doctype html><html><head><meta http-equiv=\"refresh\" content=\"15\"></head><body>";
+ pagina += "<h1>Temperatura: ";		// cadena pagina con HTML incluido refesco cada 15 seg.
+ int TEMPERATURA = dht.readTemperature();	// obtiene valor de temperatura y almacena en variable
+ pagina += String(TEMPERATURA); 	// agrega a cadena el valor de temperatura convertido a String
+ pagina += "<br>";			// agrega a cadena etiqueta para nueva linea
+ pagina += "Humedad: ";			// agrega a cadena el texto Humedad:
+ int HUMEDAD = dht.readHumidity();	// obtiene valor de humedad y almacena en variable
+ pagina += String(HUMEDAD); 		// agrega a cadena el valor de humedad convertido a String
+ pagina += "</h1></body></html>";	// agrega etiquetas para cerrar el codigo HTML
+ 
+ String enviar = "AT+CIPSEND=";		// crea cadena enviar con comando AT para enviar datos
+ enviar+=conexion;			// agrega a la cadena el numero de conexion
+ enviar+=",";				// agrega a la cadena una coma
+ enviar+=pagina.length();		// agrega a la cadena la longitud de la cadena pagina
+ D1.println(enviar);			// envia cadena enviar por conexion serie al modulo
+ delay(1000);
+ D1.println(pagina);			// envia cadena pagina por conexion serie al modulo
+ delay(1000);
+ 
+ String cerrar = "AT+CIPCLOSE=";	// crea cadena cerrar con comando AT para cerrar conexion
+ cerrar+=conexion;			// agrega a cadena cerrar el numero de conexion
+ D1.println(cerrar);			// envia la cadena cerrar por conexion serie al modulo
+ delay(2000);
+ }
+ }
+ }
+}

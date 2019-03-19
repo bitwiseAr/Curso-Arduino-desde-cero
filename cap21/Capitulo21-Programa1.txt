@@ -1,0 +1,29 @@
+/*
+	Capitulo 21 de Arduino desde cero en Español.
+	Programa que permite contar las interrupciones generadas por el foto interruptor
+	modelo KY-010 mediante una rutina de interrupcion externa sobre el pin digital 2 y
+	mostrar el valor de la cuenta por el monitor serial.
+
+	Autor: bitwiseAr  
+
+*/
+
+
+volatile int CONTADOR = 0;  		// variable global CONTADOR
+int ANTERIOR = 0 ; 			// variable para determinar si el valor de CONTADOR
+					// ha cambiado desde la ultima vez
+void setup(){
+  Serial.begin(9600); 			// inicializacion de comunicacion serie a 9600 bps
+  attachInterrupt(digitalPinToInterrupt(2), sensor, RISING); // interrupcion sobre pin digital 2
+}							     // con rutina ISR llamada sensor
+        
+void loop(){
+  if (ANTERIOR != CONTADOR){		// si hubo un cambio respecto del valor anterior
+    Serial.println(CONTADOR);		// imprime en monitor serial el valor de CONTADOR
+    ANTERIOR = CONTADOR ;		// actualiza valor de ANTERIOR con nuevo valor
+  }					// de CONTADOR
+}
+   
+void sensor(){				// rutina ISR
+  CONTADOR++;				// incrementa valor de CONTADOR en 1
+}

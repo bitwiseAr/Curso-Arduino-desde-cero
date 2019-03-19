@@ -1,0 +1,26 @@
+/*
+	Capitulo 4 de Arduino desde cero en Español.
+	Primer programa que enciende y apaga de forma progresiva un LED mediante PWM.
+
+	Autor: bitwiseAr  
+
+*/
+
+int LED = 3;				// LED en pin 3
+int BRILLO;
+
+void setup(){
+	pinMode(LED, OUTPUT);		// pin 3 como salida
+}
+
+void loop(){
+for (BRILLO = 0; BRILLO < 256; BRILLO++){	// bucle de 0 a 255
+	analogWrite(LED, BRILLO);		// escritura en pin PWM
+	delay(15);				// demora entre incrementos
+	}
+
+for (BRILLO = 255; BRILLO >= 0; BRILLO--){	// bucle de 255 a 0
+	analogWrite(LED, BRILLO);		// escritura en pin PWM
+	delay(15);				// demora entre incrementos
+	}
+}
