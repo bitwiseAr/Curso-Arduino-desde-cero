@@ -1,5 +1,5 @@
 /*
-	Capitulo 10 de Arduino desde cero en Español
+	Capitulo 10 de Arduino desde cero en EspaÃ±ol
 	Programa que permite mostrar en el modulo LCD el tiempo transcurrido en segundos desde
 	que se inicio el programa.
 
@@ -9,7 +9,7 @@
 
 #include <LiquidCrystal.h>		// importa libreria
 
-LiquidCrystal lcd(7, 6, 5, 4, 3, 2);	// pines RS, E, D3, D2, D1, D0 de modulo 1602A
+LiquidCrystal lcd(7, 6, 5, 4, 3, 2);	// pines RS, E, D4, D5, D6, D7 de modulo 1602A
 
 void setup() {
   lcd.begin(16, 2);			// inicializa a display de 16 columnas y 2 lineas
