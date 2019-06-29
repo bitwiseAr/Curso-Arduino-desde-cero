@@ -1,5 +1,5 @@
 /*
-	Capitulo 23 de Arduino desde cero en Español.
+	Capitulo 23 de Arduino desde cero en EspaÃ±ol.
 	Programa que utiliza el sensor de temperatura analogico LM35 para tomar 5
 	muestras de temperatura y mostrar el promedio de las mismas en una pantalla
 	LCD modelo 1602A.
@@ -11,14 +11,14 @@
 #include <LiquidCrystal.h>		// importa libreria LiquidCrystal
 
 LiquidCrystal lcd(7, 6, 5, 4, 3, 2);	// crea objeto y asigna pines a los cuales se
-					// encuentran conectados RS, E, D3, D2, D1, D0
+					// encuentran conectados RS, E, D4, D5, D6, D7
 int SENSOR;		// variable almacena valor leido de entrada analogica A0
 float TEMPERATURA;	// valor de temperatura en grados centigrados
 float SUMA;		// valor de la suma de las 5 lecturas de temperatura
 
 void setup() {
   lcd.begin(16, 2);	// inicializa lcd en 16 columnas por 2 filas
-  // entradas analógicas no requieren inicialización
+  // entradas analÃ³gicas no requieren inicializaciÃ³n
 }
 
 void loop() {
