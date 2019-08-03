@@ -1,0 +1,33 @@
+/*
+	Capitulo 49 de Arduino desde cero en Español.
+	Programa que muestra en un display de 7 segmentos y cuatro digitos mediante
+	el MAX7219, la cantidad de segundos transcurridos desde iniciado el programa
+	a modo de ejemplo para verificar que todo se encuentra conectado correctamente
+	Requiere instalar libreria LedControl
+
+	Autor: bitwiseAr  
+
+*/
+
+#include "LedControl.h"			// incluye libreria LedControl
+
+
+LedControl lc = LedControl(11, 13, 10, 1);	// crea objeto
+
+int segundos;				// variable para almacenar cantidad de segundos
+
+void setup() {
+  lc.shutdown(0, false);		// inicia el MAX7219
+  lc.setIntensity(0, 4);		// establece nivel de brillo en 4
+  lc.clearDisplay(0);			// borra displays
+}
+
+void loop() { 
+  segundos = millis()/1000;			  // obtiene milisegundos transcurridos desde
+						  // iniciado el programa y pasa a segundos
+  lc.setDigit(0, 0, segundos % 10, false);	  // en digito 0 aplica modulo 10
+  lc.setDigit(0, 1, (segundos/10) % 10, false);	  // en digito 1 divide por 10 y aplica modulo 10
+  lc.setDigit(0, 2, (segundos/100) % 10, false);  // en digito 2 divide por 100 y aplica modulo 10
+  lc.setDigit(0, 3, (segundos/1000) % 10, false); // en digito 3 divide por 1000 y aplica modulo 10
+  delay(1000);					  // demora de 1 segundo
+}

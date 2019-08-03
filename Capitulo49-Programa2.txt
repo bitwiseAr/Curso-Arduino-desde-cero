@@ -1,0 +1,34 @@
+/*
+	Capitulo 49 de Arduino desde cero en Español.
+	Programa que muestra en un display de 7 segmentos y cuatro digitos mediante
+	el MAX7219, un numero con coma decimal que podria provenir de un sensor
+	de temperatura como el Termistor, se multiplica por 100 para poder usar
+	el operador modulo y asi mostrar en display, a modo didactico
+	Requiere instalar libreria LedControl
+
+	Autor: bitwiseAr  
+
+*/
+
+#include "LedControl.h"		// incluye libreria LedControl
+
+LedControl lc = LedControl(11, 13, 10, 1);	// crea objeto
+
+float TEMPERATURA = 22.27;	// variable con un valor de punto flotante
+int TEMP_DISPLAY;		// variable entera para poder aplicar operador modulo
+
+void setup() {
+  lc.shutdown(0, false);	// inicia el MAX7219
+  lc.setIntensity(0, 4);	// establece nivel de brillo en 4
+  lc.clearDisplay(0);		// borra displays
+}
+
+void loop() { 
+  TEMP_DISPLAY = TEMPERATURA * 100;	// multiplica por 100 para deshacerse de la coma decimal
+  lc.setDigit(0, 0, TEMP_DISPLAY % 10, false);	      // en digito 0 aplica modulo 10
+  lc.setDigit(0, 1, (TEMP_DISPLAY/10) % 10, false);   // en digito 1 divide por 10 y aplica modulo 10
+  lc.setDigit(0, 2, (TEMP_DISPLAY/100) % 10, true);   // en digito 2 divide por 100, aplica modulo 10
+						      // y enciende punto decimal
+  lc.setDigit(0, 3, (TEMP_DISPLAY/1000) % 10, false); // en digito 3 divide por 1000 y aplica modulo 10
+  delay(1000);				// demora de 1 segundo (sin fin practico)
+}
