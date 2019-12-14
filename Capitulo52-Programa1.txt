@@ -1,0 +1,23 @@
+/*
+	Capitulo 52 de Arduino desde cero en Español.
+	Programa que permite controlar un modulo de rele de estado solido activo nivel bajo
+	encendiendo y apagando una lampara con tension de red conectada como carga 
+        a intervalos de dos segundos.
+
+	Autor: bitwiseAr  
+
+*/
+
+#define RELE 2			// linea de control de modulo en pin 2
+
+
+void setup(){
+  pinMode(RELE, OUTPUT);	// pin 2 como salida
+}
+
+void loop(){
+  digitalWrite(RELE, LOW);	// envia nivel bajo para activar modulo
+  delay(2000);			// demora de 2 segundos
+  digitalWrite(RELE, HIGH);	// envia nivel alto para desactivar modulo
+  delay(2000);			// demora de 2 segundos
+}
