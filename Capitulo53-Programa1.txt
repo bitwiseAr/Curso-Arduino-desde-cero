@@ -1,0 +1,20 @@
+/*
+	Capitulo 53 de Arduino desde cero en Español.
+	Lectura de la entrada analogica A0 a donde se encuentra conectado un sensor de agua y
+	mostrando los valores mediante monitor serie.
+
+	Autor: bitwiseAr  
+
+*/
+
+int SENSOR;		// variable para almacenar valor leido
+
+void setup(){
+  Serial.begin(9600);	// inicializa monitor serie a 9600 bps
+}
+
+void loop(){
+  SENSOR = analogRead(A0);	// lee y almacena en variable valor leido de entrada A0
+  Serial.println(SENSOR);	// muestra en monitor serie
+  delay(1000);			// demora de 1 segundo
+}

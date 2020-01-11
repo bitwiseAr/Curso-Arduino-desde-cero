@@ -1,0 +1,27 @@
+/*
+	Capitulo 53 de Arduino desde cero en Español.
+	Lectura de la entrada analogica A0 a donde se encuentra conectado un sensor de agua y
+	encendiendo un LED conectado a pin digital numero 2 si detecta presencia de la misma.
+
+	Autor: bitwiseAr  
+
+*/
+
+int SENSOR;		// variable para almacenar valor leido de entrada A0
+#define LED 2		// LED en pin digital 2
+
+void setup(){
+  pinMode(LED, OUTPUT);		// pin digital 2 como salida
+}
+
+void loop(){
+  SENSOR = analogRead(A0);	// lee y almacena valor leido de entrada A0
+  if (SENSOR > 0){		// si hay presencia de agua
+    digitalWrite(LED, HIGH);	// enciende LED
+  }
+  else{
+    digitalWrite(LED, LOW);	// si no hay presencia de agua apaga LED
+  }
+  
+  delay(1000);			// demora de 1 segundo
+}
