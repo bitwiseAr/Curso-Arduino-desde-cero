@@ -1,0 +1,52 @@
+/*
+	Capitulo 54 de Arduino desde cero en Español.
+	Visualizacion en pantalla TFT bus SPI ILI9341 de un ejemplo de interfaz de usuario
+	para mostrar informacion de dos sensores de temperatura y humedad (no implementados)
+	Requiere librerias Adafruit ILI9341 y Adafruit GFX
+
+	Autor: bitwiseAr  
+
+*/
+
+#include <SPI.h>		// incluye libreria bus SPI
+#include <Adafruit_GFX.h>	// incluye libreria para manejo de graficos
+#include <Adafruit_ILI9341.h>	// incluye libreria para controlador ILI9341
+ 
+#define TFT_DC 9		// define constante TFT_DC con numero 9
+#define TFT_CS 10		// define constante TFT_CS con numero 10
+
+Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC);	// crea objeto
+ 
+void setup(){
+  tft.begin();					// inicializa pantalla
+  tft.setRotation(0);				// establece posicion vertical con pines hacia abajo
+  tft.fillScreen(ILI9341_BLACK);		// fondo de pantalla de color negro
+  tft.fillRect(0, 0, 240, 30, ILI9341_NAVY);	// rectangulo azul naval a modo de fondo de titulo 
+  tft.setTextColor(ILI9341_WHITE);		// color de texto en blanco
+  tft.setTextSize(2);				// escala de texto en 2
+  tft.setCursor(25,6);				// ubica cursor
+  tft.print("Panel de control"); 		// imprime texto
+  tft.setCursor(0,35);				// ubica cursor
+  tft.print("Zona: 1");				// imprime texto
+  tft.setCursor(0,55);				// ubica cursor
+  tft.print("Temperatura Humedad");		// imprime texto
+  tft.drawLine(0, 170, 240, 170, ILI9341_RED);	// linea horizontal de color rojo
+  tft.setCursor(0,185);				// ubica cursor
+  tft.print("Zona: 2");				// imprime texto
+  tft.setCursor(0,205);				// ubica cursor
+  tft.print("Temperatura Humedad");		// imprime texto
+}
+
+void loop(){
+  tft.setTextColor(ILI9341_YELLOW, ILI9341_BLACK);	// texto en color amarillo
+  tft.setTextSize(6);		// escala de texto en 6
+  tft.setCursor(30,90);		// ubica cursor
+  tft.print("25");		// valor que representa la temperatura del sensor en zona 1
+  tft.setCursor(150,90);	// ubica cursor
+  tft.print("64");		// valor que representa la humedad del sensor en zona 1
+  tft.setCursor(30,240);	// ubica cursor
+  tft.print("23");		// valor que representa la temperatura del sensor en zona 2
+  tft.setCursor(150,240);	// ubica cursor
+  tft.print("61");		// valor que representa la humedad del sensor en zona 2
+  delay(10);			// demora de 10 mseg.
+}

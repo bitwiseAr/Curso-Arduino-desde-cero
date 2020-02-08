@@ -1,0 +1,37 @@
+/*
+	Capitulo 54 de Arduino desde cero en Español.
+	Visualizacion en pantalla TFT bus SPI ILI9341 de cantidad de segundos transcurridos
+	desde iniciado el programa. Requiere librerias Adafruit ILI9341 y Adafruit GFX
+
+	Autor: bitwiseAr  
+
+*/
+
+#include <SPI.h>		// incluye libreria bus SPI
+#include <Adafruit_GFX.h>	// incluye libreria para manejo de graficos
+#include <Adafruit_ILI9341.h>	// incluye libreria para controlador ILI9341
+ 
+#define TFT_DC 9		// define constante TFT_DC con numero 9
+#define TFT_CS 10		// define constante TFT_CS con numero 10
+
+Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC);	// crea objeto
+ 
+void setup(){
+  tft.begin();				// inicializa pantalla
+  tft.setRotation(0);			// establece posicion vertical con pines hacia abajo
+  tft.fillScreen(ILI9341_RED); 		// relleno de pantalla en color rojo
+  tft.setTextColor(ILI9341_WHITE);	// color de texto en blanco
+  tft.setTextSize(2);			// escala de texto en 2
+  tft.setCursor(0,0);			// ubica cursor en esquina superior izquierda
+  tft.print("Hola, han pasado: "); 	// imprime texto
+  tft.setCursor(75,250);		// ubica cursor a 75 px de izquierda y 250 px de arriba
+  tft.print("segundos");		// imprime texto
+}
+
+void loop(){
+  tft.setTextColor(ILI9341_BLUE, ILI9341_RED);	// texto blanco en fondo rojo
+  tft.setTextSize(8);			// escala de texto en 8
+  tft.setCursor(30,100);		// ubica cursor
+  tft.print(millis()/1000);		// imprime segundos transcurridos
+  delay(10);				// demora de 10 mseg.
+}
