@@ -1,0 +1,20 @@
+/*
+	Capitulo 56 de Arduino desde cero en Español.
+	Parpadeo de LED RX de placa Pro Micro a modo de ejemplo de correcta instalacion
+	de controladores y tarjeta en IDE.
+	
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+void setup() {
+  pinMode(17, OUTPUT);		// LED RX interno com salida
+}
+
+void loop() {
+  digitalWrite(17, LOW);	// enciende LED (activo bajo)
+  delay(2000);			// demora de 2 segundos             
+  digitalWrite(17, HIGH);	// apaga LED
+  delay(1000);			// demora de 1 segundo
+}
