@@ -20,5 +20,5 @@ void loop() {
   lcd.print("Hola, han pasado");	// escribe el texto en pantalla
   lcd.setCursor(0, 1);			// ubica cursor en columna 0, linea 1
   lcd.print(millis() / 1000);		// escribe valor en segundos devuelto por funcion millis()
-  lcd.print(" seg.");			// imprime a continuacion abreviatura de segundos
+  lcd.print(" seg.");			// imprime a continuacion segundos
 }
