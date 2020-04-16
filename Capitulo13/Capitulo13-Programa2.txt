@@ -1,5 +1,5 @@
 /*
-	Capitulo 13 de Arduino desde cero en Español.
+	Capitulo 13 de Arduino desde cero en EspaÃ±ol.
 	Programa que utiliza la salida analogica A0 de KY-038 (o KY-037) para enviar el
 	valor leido por monitor serial.
 	Autor: bitwiseAr  
