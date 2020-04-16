@@ -1,5 +1,5 @@
 /*
-	Capitulo 14 de Arduino desde cero en Español.
+	Capitulo 14 de Arduino desde cero en EspaÃ±ol.
 	Programa que utiliza el modulo KY-018 o fotoresistencia para cambiar el brillo
 	del LED de forma directamente proporcional a la luz captada.
 
@@ -14,7 +14,7 @@ int PWM;
 
 void setup(){
   pinMode(LED, OUTPUT);		// pin 3 como salida
-  // entradas analogicas no requieren inicialización
+  // entradas analogicas no requieren inicializaciÃ³n
 }
 
 
