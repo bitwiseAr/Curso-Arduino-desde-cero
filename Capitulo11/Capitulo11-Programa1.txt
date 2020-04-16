@@ -1,5 +1,5 @@
 /*
-	Capitulo 11 de Arduino desde cero en Español.
+	Capitulo 11 de Arduino desde cero en EspaÃ±ol.
 	Programa que permite encender un modulo de rele mediante el sensor de movimiento
 	PIR.
 
@@ -7,9 +7,9 @@
 
 */
 
-int PIR = 2;			// señal de PIR a pin 2
+int PIR = 2;			// seÃ±al de PIR a pin 2
 int RELE = 3;			// IN de rele a pin 3
-int ESTADO = 0;			// almacena estado de señal
+int ESTADO = 0;			// almacena estado de seÃ±al
 
 void setup(){
   pinMode(PIR, INPUT);		// pin 2 como entrada
@@ -19,8 +19,8 @@ void setup(){
 
 void loop(){
 
-  ESTADO = digitalRead(PIR);	// lectura de estado de señal
-  if (ESTADO == HIGH){		// si la señal esta en alto indicando movimiento
+  ESTADO = digitalRead(PIR);	// lectura de estado de seÃ±al
+  if (ESTADO == HIGH){		// si la seÃ±al esta en alto indicando movimiento
     digitalWrite(RELE, LOW);	// activa modulo de rele con nivel bajo
     delay(4000);		// demora de 4 segundos
   } else {
