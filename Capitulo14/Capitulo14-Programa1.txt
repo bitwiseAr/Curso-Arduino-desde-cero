@@ -1,5 +1,5 @@
 /*
-	Capitulo 14 de Arduino desde cero en Español.
+	Capitulo 14 de Arduino desde cero en EspaÃ±ol.
 	Programa que utiliza el modulo KY-018 o fotoresistencia para encender un LED
         cuando hay baja intensidad de luz ambiente.
 
@@ -13,7 +13,7 @@ int VALOR;			// almacena valor leido de entrada A0
 
 void setup(){
   pinMode(LED, OUTPUT);		// pin 3 como salida
-  // entradas analogicas no requieren inicialización
+  // entradas analogicas no requieren inicializaciÃ³n
 }
 
 
