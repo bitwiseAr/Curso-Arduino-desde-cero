@@ -1,5 +1,5 @@
 /*
-	Capitulo 15 de Arduino desde cero en Español.
+	Capitulo 15 de Arduino desde cero en EspaÃ±ol.
 	Programa que utiliza el modulo KY-017 para encender un LED cuando el sensor
 	por interruptor de mercurio abre el circuito (uno logico).
 
