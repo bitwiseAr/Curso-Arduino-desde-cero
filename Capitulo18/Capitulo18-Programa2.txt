@@ -1,5 +1,5 @@
 /*
-	Capitulo 18 de Arduino desde cero en Español.
+	Capitulo 18 de Arduino desde cero en EspaÃ±ol.
 	Programa que utiliza el modulo sensor de campo magnetico KY-035 para mostrar
 	mediante el monitor serial la intensidad de campo magnetico leido mediante 
         la entrada analogica A0. Si lee valores bajos o altos signfica campo detectado y lo
@@ -14,7 +14,7 @@ int SENSOR;			// variable para almacenar valor leido de A0
 
 void setup(){
   Serial.begin(9600);		// inicializa comunicacion serie a 9600 bps
-  // entradas analógicas no requieren inicialización
+  // entradas analÃ³gicas no requieren inicializaciÃ³n
 }
 
 
