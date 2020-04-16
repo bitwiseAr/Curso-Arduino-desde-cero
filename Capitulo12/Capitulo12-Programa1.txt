@@ -1,7 +1,7 @@
 /*
-	Capitulo 12 de Arduino desde cero en Español.
+	Capitulo 12 de Arduino desde cero en EspaÃ±ol.
 	Programa que enciende un LED RGB pasando por sus colores cada dos segundos.
-	LED RGB de cátodo común con resistencias de 330 ohms en serie con cada ánodo.
+	LED RGB de cÃ¡todo comÃºn con resistencias de 330 ohms en serie con cada Ã¡nodo.
 
 	Autor: bitwiseAr  
 
