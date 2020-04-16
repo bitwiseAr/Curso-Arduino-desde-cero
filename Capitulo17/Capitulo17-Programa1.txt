@@ -1,5 +1,5 @@
 /*
-	Capitulo 17 de Arduino desde cero en Español.
+	Capitulo 17 de Arduino desde cero en EspaÃ±ol.
 	Programa que utiliza el modulo joystick KY-023 para encender LEDs mediante PWM
 	y obtener una indicacion visual del movimiento de la palanca y cierre del
 	interruptor incorporado.
