@@ -1,5 +1,5 @@
 /*
-	Capitulo 16 de Arduino desde cero en Español.
+	Capitulo 16 de Arduino desde cero en EspaÃ±ol.
 	Programa que utiliza el modulo KY-002 para encender un LED cuando el sensor
 	detecta un golpe o vibracion fuerte escribiendo de forma directa en el LED.
         El sensor brinda un nivel logico bajo cuando detecta la vibracion.
