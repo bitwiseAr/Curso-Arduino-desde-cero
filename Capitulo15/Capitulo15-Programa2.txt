@@ -1,5 +1,5 @@
 /*
-	Capitulo 15 de Arduino desde cero en Español.
+	Capitulo 15 de Arduino desde cero en EspaÃ±ol.
 	Programa que utiliza dos modulos KY-027 en extremos de protoboard con sensores
 	a 45 grados para encender sus propios LEDs integrados al inclinarse.
 
