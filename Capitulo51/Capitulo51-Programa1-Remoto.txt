@@ -1,5 +1,5 @@
 /*
-	Capitulo 51 de Arduino desde cero en Español.
+	Capitulo 51 de Arduino desde cero en EspaÃ±ol.
 	Programa que ejecuta la seccion Remoto de un enlace RF con los modulos NRF24L01
 	Envia texto a la base y luego espera a recibir uno desde la misma.
 	Requiere instalar libreria RadioHead
