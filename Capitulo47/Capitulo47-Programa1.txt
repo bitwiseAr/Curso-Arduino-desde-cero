@@ -1,5 +1,5 @@
 /*
-	Capitulo 47 de Arduino desde cero en Español.
+	Capitulo 47 de Arduino desde cero en EspaÃ±ol.
 	Programa que muestra texto en la zona amarilla de la pantalla OLED y en la zona
 	cyan los segundos transcurridos desde iniciado el programa
 	Requiere instalar librerias Adafruit GFX y Adafruit SSD1306
