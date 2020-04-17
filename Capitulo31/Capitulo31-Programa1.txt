@@ -1,5 +1,5 @@
 /*
-	Capitulo 31 de Arduino desde cero en Español.
+	Capitulo 31 de Arduino desde cero en EspaÃ±ol.
 	Programa que utiliza la Libreria Stepper para el control de un motor unipolar
 	de 5 hilos modelo 28BYJ-48 y su correspondiente driver ULN2003. Se establece una
 	velocidad de 2 RPM y un total de 512 pasos equivalentes a un cuarto de vuelta.
