@@ -1,5 +1,5 @@
 /*
-	Capitulo 35 de Arduino desde cero en Español.
+	Capitulo 35 de Arduino desde cero en EspaÃ±ol.
 	Simple programa que muestra en la pantalla de un modulo LCD 1602A mediante adaptador
 	LCD I2C un texto que parpadea a intervalos de medio segundo. Adaptador basado en
 	circuito integrado PCF8574 y libreria LiquidCrystal_I2C descargada desde:
