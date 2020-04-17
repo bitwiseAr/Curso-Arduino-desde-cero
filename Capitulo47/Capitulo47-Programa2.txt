@@ -1,5 +1,5 @@
 /*
-	Capitulo 47 de Arduino desde cero en Español.
+	Capitulo 47 de Arduino desde cero en EspaÃ±ol.
 	Programa que muestra dos textos largos para verificar el ajuste automatico de texto
 	Requiere instalar librerias Adafruit GFX y Adafruit SSD1306
 
