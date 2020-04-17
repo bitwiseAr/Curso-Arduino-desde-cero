@@ -1,5 +1,5 @@
 /*
-	Capitulo 46 de Arduino desde cero en Español.
+	Capitulo 46 de Arduino desde cero en EspaÃ±ol.
 	Programa que recibe mensaje a traves del modulo receptor RF de 433 Mhz
 	enviado desde el emisor. Ver Capitulo46-Programa1-Emisor.txt
 	Requiere instalar libreria RadioHead.h
