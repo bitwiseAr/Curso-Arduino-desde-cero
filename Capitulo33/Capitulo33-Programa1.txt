@@ -1,5 +1,5 @@
 /*
-	Capitulo 33 de Arduino desde cero en Español.
+	Capitulo 33 de Arduino desde cero en EspaÃ±ol.
 	Simple programa para controlar un motor del tipo bipolar NEMA 17 mediante el
 	controlador driver A4988 logrando un giro de media vuelta en un sentido y en otro
 
