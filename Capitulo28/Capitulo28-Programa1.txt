@@ -1,5 +1,5 @@
 /*
-	Capitulo 28 de Arduino desde cero en Español.
+	Capitulo 28 de Arduino desde cero en EspaÃ±ol.
 	Programa que demuestra el funcionamiento del sensor de gas natural MQ-5 imprimiendo
 	en el monitor serial y serial plotter los valores obtenidos cuando el sensor es
 	expuesto a gas butano.
