@@ -1,5 +1,5 @@
 /*
-	Capitulo 51 de Arduino desde cero en Español.
+	Capitulo 51 de Arduino desde cero en EspaÃ±ol.
 	Programa que ejecuta la seccion Remoto de un enlace RF con los modulos NRF24L01
 	Envia en formato de texto separado por una coma valores de temperatura y humedad
 	obtenidos de un modulo KY-015 basado en DHT11
