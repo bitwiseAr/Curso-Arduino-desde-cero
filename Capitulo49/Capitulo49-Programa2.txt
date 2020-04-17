@@ -1,5 +1,5 @@
 /*
-	Capitulo 49 de Arduino desde cero en Español.
+	Capitulo 49 de Arduino desde cero en EspaÃ±ol.
 	Programa que muestra en un display de 7 segmentos y cuatro digitos mediante
 	el MAX7219, un numero con coma decimal que podria provenir de un sensor
 	de temperatura como el Termistor, se multiplica por 100 para poder usar
