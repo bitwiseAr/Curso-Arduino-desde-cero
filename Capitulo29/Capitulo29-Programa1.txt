@@ -1,5 +1,5 @@
 /*
-	Capitulo 29 de Arduino desde cero en Español.
+	Capitulo 29 de Arduino desde cero en EspaÃ±ol.
 	Programa que demuestra el funcionamiento de una tira de 8 Neopixel encadenados
 	encendiendo cada uno de sus elementos en color azul. Requiere la instalacion
 	de la libreria Adafruit Neopixel.
