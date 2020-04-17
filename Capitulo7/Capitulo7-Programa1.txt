@@ -1,5 +1,5 @@
 /*
-	Capitulo 7 de Arduino desde cero en Español
+	Capitulo 7 de Arduino desde cero en EspaÃ±ol
 	Programa que utiliza el sensor DHT22 o DHT11 para obtener datos de temperatura
 	y humedad. Deben instalarse la Librerias DHT Sensor Library y Adafruit Unified Sensor.
 
