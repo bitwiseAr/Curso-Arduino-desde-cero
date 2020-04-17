@@ -1,5 +1,5 @@
 /*
-	Capitulo 19 de Arduino desde cero en Español.
+	Capitulo 19 de Arduino desde cero en EspaÃ±ol.
 	Programa que utiliza el modulo controlador de motor L298N para controlar el giro
         y velocidad de un motor de corriente continua con caja reductora y rueda.
 
