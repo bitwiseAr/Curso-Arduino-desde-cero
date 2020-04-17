@@ -1,5 +1,5 @@
 /*
-	Capitulo 46 de Arduino desde cero en Español.
+	Capitulo 46 de Arduino desde cero en EspaÃ±ol.
 	Programa que envia mensaje a traves del modulo emisor RF de 433 Mhz cada
 	un segundo.
 	Requiere instalar libreria RadioHead.h
