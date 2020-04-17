@@ -1,5 +1,5 @@
 /*
-	Capitulo 43 de Arduino desde cero en Español.
+	Capitulo 43 de Arduino desde cero en EspaÃ±ol.
 	Programa que enciende cada elemento de la matriz de 8x8 desde el primer
 	elemento hasta el ultimo, blanquea y vuelve a comenzar.
 
