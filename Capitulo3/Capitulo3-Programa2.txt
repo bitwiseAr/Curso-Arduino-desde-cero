@@ -1,5 +1,5 @@
 /*
-	Capitulo 3 de Arduino desde cero en Español
+	Capitulo 3 de Arduino desde cero en EspaÃ±ol
 	Segundo programa que al presionar el pulsador mantiene encendido el led hasta que vuelva
 	a presionarse para apagarse.
 
