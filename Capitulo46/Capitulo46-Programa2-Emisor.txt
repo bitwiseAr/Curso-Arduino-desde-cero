@@ -1,5 +1,5 @@
 /*
-	Capitulo 46 de Arduino desde cero en Español.
+	Capitulo 46 de Arduino desde cero en EspaÃ±ol.
 	Programa que mediante dos pulsadores en un modulo emisor RF de 433 Mhz
 	permite enviar el caracter 1 o 2.
 	Requiere instalar libreria RadioHead.h
