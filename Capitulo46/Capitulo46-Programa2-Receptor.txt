@@ -1,5 +1,5 @@
 /*
-	Capitulo 46 de Arduino desde cero en Español.
+	Capitulo 46 de Arduino desde cero en EspaÃ±ol.
 	Programa que enciende LED rojo y apaga el mismo al recibir el numero 1 y
 	enciende LED verde por 5 segundos y apaga al recibir el numero 2.
 	Ver: Capitulo46-Programa2-Emisor.txt	
