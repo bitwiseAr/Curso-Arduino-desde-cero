@@ -1,5 +1,5 @@
 /*
-	Capitulo 55 de Arduino desde cero en Español.
+	Capitulo 55 de Arduino desde cero en EspaÃ±ol.
 	Generacion de una simple melodia happy birthday con buzzer pasivo KY-006 mediante pulsador.
 
 	Autor: bitwiseAr  
