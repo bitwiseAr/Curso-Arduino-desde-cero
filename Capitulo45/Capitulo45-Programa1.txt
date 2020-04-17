@@ -1,5 +1,5 @@
 /*
-	Capitulo 45 de Arduino desde cero en Español.
+	Capitulo 45 de Arduino desde cero en EspaÃ±ol.
 	Programa que enciende durante un segundo y apaga por dos segundos una 
 	lampara de auto de 12 Volts y 15 Watts conectada a un modulo MOSFET IRF520N
 	con alimentacion externa de 12 vots provista por bateria o fuente.
