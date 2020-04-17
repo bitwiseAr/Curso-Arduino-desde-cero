@@ -1,5 +1,5 @@
 /*
-	Capitulo 39 de Arduino desde cero en Español.
+	Capitulo 39 de Arduino desde cero en EspaÃ±ol.
 	Programa que obtiene la capacidad de memoria EEPROM, lee valor por defecto en direccion 0
 	y luego escribe el numero 39 en dicha direccion.
 
