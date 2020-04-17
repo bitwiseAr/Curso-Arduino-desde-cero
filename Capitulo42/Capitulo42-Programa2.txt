@@ -1,5 +1,5 @@
 /*
-	Capitulo 42 de Arduino desde cero en Español.
+	Capitulo 42 de Arduino desde cero en EspaÃ±ol.
 	Programa que permite obtener temperatura y humedad de un sensor DHT11 conectado a pin
 	digital numero 4 y mostrar los datos en una pagina web. Requiere DHT Sensor Library 
 	y Unified Sensor by Adafruit
