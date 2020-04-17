@@ -1,5 +1,5 @@
 /*
-	Capitulo 32 de Arduino desde cero en Español.
+	Capitulo 32 de Arduino desde cero en EspaÃ±ol.
 	Simple programa de parpadeo de LED interno L a intervalos de 1 segundo para verificar
 	la correcta carga en Pro Mini mediante conversor USB-TTL.
 
