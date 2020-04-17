@@ -1,5 +1,5 @@
 /*
-	Capitulo 24 de Arduino desde cero en Español.
+	Capitulo 24 de Arduino desde cero en EspaÃ±ol.
 	Programa que permite establecer una comunicacion con el modulo Bluetooth HC-05
 	y configurarlo de manera tal que pueda ser vinculado mediante un telefono
 	movil o dispositivo compatible.
