@@ -1,5 +1,5 @@
 /*
-	Capitulo 49 de Arduino desde cero en Español.
+	Capitulo 49 de Arduino desde cero en EspaÃ±ol.
 	Programa que muestra en un display de 7 segmentos y cuatro digitos mediante
 	el MAX7219, la cantidad de segundos transcurridos desde iniciado el programa
 	a modo de ejemplo para verificar que todo se encuentra conectado correctamente
