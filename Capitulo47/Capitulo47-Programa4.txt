@@ -1,5 +1,5 @@
 /*
-	Capitulo 47 de Arduino desde cero en Español.
+	Capitulo 47 de Arduino desde cero en EspaÃ±ol.
 	Programa que muestra texto ALARMA dentro de un rectangulo para resaltar
 	Requiere instalar librerias Adafruit GFX y Adafruit SSD1306
 
