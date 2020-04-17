@@ -1,7 +1,7 @@
 /*
-	Capitulo 5 de Arduino desde cero en Español
-	Primer programa que envía mediante el Monitor Serial el valor de distancia
-	leído por el sensor ultrasónico HC-SR04.
+	Capitulo 5 de Arduino desde cero en EspaÃ±ol
+	Primer programa que envÃ­a mediante el Monitor Serial el valor de distancia
+	leÃ­do por el sensor ultrasÃ³nico HC-SR04.
 
 	Autor: bitwiseAr  
 
