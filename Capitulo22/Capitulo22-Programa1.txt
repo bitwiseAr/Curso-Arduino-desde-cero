@@ -1,5 +1,5 @@
 /*
-	Capitulo 22 de Arduino desde cero en Español.
+	Capitulo 22 de Arduino desde cero en EspaÃ±ol.
 	Programa que demuestra el funcionamiento del codificador rotatorio KY-040
         utilizando interrupciones y permitiendo incrementar o decrementar un valor
         inicial dependiendo del sentido de giro del mismo y estableciendo un limite
