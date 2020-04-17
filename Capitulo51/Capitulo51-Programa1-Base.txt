@@ -1,5 +1,5 @@
 /*
-	Capitulo 51 de Arduino desde cero en Español.
+	Capitulo 51 de Arduino desde cero en EspaÃ±ol.
 	Programa que ejecuta la seccion Base de un enlace RF con los modulos NRF24L01
 	Recibe un texto desde el extremo Remoto y muestra en monitor serie, luego envia
 	un texto de respuesta.
