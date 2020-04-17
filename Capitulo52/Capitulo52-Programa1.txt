@@ -1,5 +1,5 @@
 /*
-	Capitulo 52 de Arduino desde cero en Español.
+	Capitulo 52 de Arduino desde cero en EspaÃ±ol.
 	Programa que permite controlar un modulo de rele de estado solido activo nivel bajo
 	encendiendo y apagando una lampara con tension de red conectada como carga 
         a intervalos de dos segundos.
