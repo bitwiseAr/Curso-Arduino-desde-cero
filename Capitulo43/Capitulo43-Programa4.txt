@@ -1,5 +1,5 @@
 /*
-	Capitulo 43 de Arduino desde cero en Español.
+	Capitulo 43 de Arduino desde cero en EspaÃ±ol.
 	Programa que muestra una flecha hacia arriba con animacion de movimiento en 9 cuadros.
 
 	Autor: bitwiseAr  
