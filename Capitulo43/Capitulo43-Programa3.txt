@@ -1,5 +1,5 @@
 /*
-	Capitulo 43 de Arduino desde cero en Español.
+	Capitulo 43 de Arduino desde cero en EspaÃ±ol.
 	Programa que muestra los digitos numericos 0 a 9 a intervalos de un segundo.
 
 	Autor: bitwiseAr  
