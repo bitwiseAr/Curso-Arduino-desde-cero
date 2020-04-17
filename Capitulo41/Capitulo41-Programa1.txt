@@ -1,5 +1,5 @@
 /*
-	Capitulo 41 de Arduino desde cero en Español.
+	Capitulo 41 de Arduino desde cero en EspaÃ±ol.
 	Programa que permite establecer una comunicacion con el modulo Wemos D1 Mini
 	mediante UART (TX, RX) para enviarle comandos AT por monitor serie y ver respuestas.
 
