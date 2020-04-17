@@ -1,5 +1,5 @@
 /*
-	Capitulo 48 de Arduino desde cero en Español.
+	Capitulo 48 de Arduino desde cero en EspaÃ±ol.
 	Programa que muestra los valores de la magnitud del campo magnetico sobre los 3 ejes
 	del magnetometro y el valor calculado de acimut magnetico
 	Requiere instalar libreria MechaQMC5883
