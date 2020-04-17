@@ -1,5 +1,5 @@
 /*
-	Capitulo 30 de Arduino desde cero en Español.
+	Capitulo 30 de Arduino desde cero en EspaÃ±ol.
 	Programa que realiza un giro completo del motor 28BYJ-48 en conjunto con el controlador
 	basado en ULN2003, detiene 5 segundos y luego comienza nuevamente. La secuencia es la de
 	medio paso para maxima precision y torque medio utilizando una matriz para su 
