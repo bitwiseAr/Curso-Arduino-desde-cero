@@ -1,5 +1,5 @@
 /*
-	Capitulo 34 de Arduino desde cero en Español.
+	Capitulo 34 de Arduino desde cero en EspaÃ±ol.
 	Visualiza en monitor serie el valor de temperatura leido por un termistor
 	tipo NTC en configuracion de divisor de tension con resistencia de 100 K.
 	Se aplica la ecuacion de Steinhart-Hart y sus coeficientes mediante
