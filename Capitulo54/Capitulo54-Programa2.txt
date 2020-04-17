@@ -1,5 +1,5 @@
 /*
-	Capitulo 54 de Arduino desde cero en Español.
+	Capitulo 54 de Arduino desde cero en EspaÃ±ol.
 	Visualizacion en pantalla TFT bus SPI ILI9341 de un ejemplo de interfaz de usuario
 	para mostrar informacion de dos sensores de temperatura y humedad (no implementados)
 	Requiere librerias Adafruit ILI9341 y Adafruit GFX
