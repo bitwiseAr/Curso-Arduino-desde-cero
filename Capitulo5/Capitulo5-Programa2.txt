@@ -1,7 +1,7 @@
 /*
-	Capitulo 5 de Arduino desde cero en Español
-	Segundo programa que envía mediante el Monitor Serial el valor de distancia
-	leído por el sensor ultrasónico HC-SR04 y enciende y apaga LED dentro del
+	Capitulo 5 de Arduino desde cero en EspaÃ±ol
+	Segundo programa que envÃ­a mediante el Monitor Serial el valor de distancia
+	leÃ­do por el sensor ultrasÃ³nico HC-SR04 y enciende y apaga LED dentro del
 	rango de 0 a 20 cms.
 
 	Autor: bitwiseAr  
