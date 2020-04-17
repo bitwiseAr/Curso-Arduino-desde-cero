@@ -1,5 +1,5 @@
 /*
-	Capitulo 53 de Arduino desde cero en Español.
+	Capitulo 53 de Arduino desde cero en EspaÃ±ol.
 	Lectura de la entrada analogica A0 a donde se encuentra conectado un sensor de agua y
 	encendiendo un LED conectado a pin digital numero 2 si detecta presencia de la misma.
 
