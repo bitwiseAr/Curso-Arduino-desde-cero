@@ -1,5 +1,5 @@
 /*
-	Capitulo 27 de Arduino desde cero en Español.
+	Capitulo 27 de Arduino desde cero en EspaÃ±ol.
 	Programa que demuestra el funcionamiento del sensor de linea KY-033 imprimiendo
 	en monitor serial si se encuentra sobre una linea de color negro o fuera de la misma.
 
