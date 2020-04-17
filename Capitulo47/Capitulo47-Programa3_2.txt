@@ -1,5 +1,5 @@
 /*
-	Capitulo 47 de Arduino desde cero en Español.
+	Capitulo 47 de Arduino desde cero en EspaÃ±ol.
 	Programa que muestra una simple animacion de circulos concentricos comenzando con
 	radio 1 hasta el alto total de la pantalla borrando luego de 250 mseg. logrando que
 	se muestre como si fuera un solo circulo que incrementa su radio
