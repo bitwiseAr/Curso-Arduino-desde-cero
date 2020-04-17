@@ -1,5 +1,5 @@
 /*
-	Capitulo 38 de Arduino desde cero en Español.
+	Capitulo 38 de Arduino desde cero en EspaÃ±ol.
 	Programa para establecer fecha y horario iniciales para el modulo RTC modelo DS3231 y
 	mostrar dichos datos mediante el monitor serie. Requiere instalar libreria RTClib
 
@@ -30,7 +30,7 @@ void loop () {
  Serial.print("/");				// caracter barra como separador
  Serial.print(fecha.month());			// funcion que obtiene el mes de la fecha completa
  Serial.print("/");				// caracter barra como separador
- Serial.print(fecha.year());			// funcion que obtiene el año de la fecha completa
+ Serial.print(fecha.year());			// funcion que obtiene el aÃ±o de la fecha completa
  Serial.print(" ");				// caracter espacio en blanco como separador
  Serial.print(fecha.hour());			// funcion que obtiene la hora de la fecha completa
  Serial.print(":");				// caracter dos puntos como separador
