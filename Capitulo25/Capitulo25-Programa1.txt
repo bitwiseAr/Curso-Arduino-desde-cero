@@ -1,5 +1,5 @@
 /*
-	Capitulo 25 de Arduino desde cero en Español.
+	Capitulo 25 de Arduino desde cero en EspaÃ±ol.
 	Programa que permite encender y apagar dos LEDs mediante el modulo Bluetooth HC-05
 	y una App en el telefono movil. La configuracion del modulo se realizo en el
 	capitulo 24.
