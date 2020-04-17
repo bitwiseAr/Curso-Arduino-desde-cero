@@ -1,5 +1,5 @@
 /*
-	Capitulo 56 de Arduino desde cero en Español.
+	Capitulo 56 de Arduino desde cero en EspaÃ±ol.
 	Parpadeo de LED RX de placa Pro Micro a modo de ejemplo de correcta instalacion
 	de controladores y tarjeta en IDE.
 	
