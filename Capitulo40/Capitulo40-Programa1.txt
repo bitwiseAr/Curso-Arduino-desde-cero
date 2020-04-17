@@ -1,5 +1,5 @@
 /*
-	Capitulo 40 de Arduino desde cero en Español.
+	Capitulo 40 de Arduino desde cero en EspaÃ±ol.
 	Programa que obtiene el UID de la tarjeta o llavero del kit RFID RC522 y muestra 
 	en monitor serie. Requiere instalar libreria MFRC522
 
