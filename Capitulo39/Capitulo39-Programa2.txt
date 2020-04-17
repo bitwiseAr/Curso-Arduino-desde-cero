@@ -1,5 +1,5 @@
 /*
-	Capitulo 39 de Arduino desde cero en Español.
+	Capitulo 39 de Arduino desde cero en EspaÃ±ol.
 	Programa que almacena en direccion cero un valor de punto flotante y en direccion diez
 	una cadena de caracteres y luego muestra en monitor serie.
 
