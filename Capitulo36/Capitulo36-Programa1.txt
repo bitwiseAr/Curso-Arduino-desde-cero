@@ -1,5 +1,5 @@
 /*
-	Capitulo 36 de Arduino desde cero en Español.
+	Capitulo 36 de Arduino desde cero en EspaÃ±ol.
 	Programa que muestra en monitor serie los valores de temperatura y presion
 	atmosferica del sensor BMP280 conectado mediante bus I2C.
 
