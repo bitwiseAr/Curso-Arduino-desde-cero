@@ -1,5 +1,5 @@
 /*
-	Capitulo 55 de Arduino desde cero en Español.
+	Capitulo 55 de Arduino desde cero en EspaÃ±ol.
 	Generacion de 5 pitidos con buzzer activo KY-012 mediante pulsador.
 
 	Autor: bitwiseAr  
