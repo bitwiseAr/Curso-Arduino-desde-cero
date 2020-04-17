@@ -1,5 +1,5 @@
 /*
-	Capitulo 51 de Arduino desde cero en Español.
+	Capitulo 51 de Arduino desde cero en EspaÃ±ol.
 	Programa que ejecuta la seccion Base de un enlace RF con los modulos NRF24L01
 	Recibe un mensaje separado por una coma con informacion de temperatura y humedad 
 	enviado desde el Remoto, separa los mismos y muestra en monitor serie.
