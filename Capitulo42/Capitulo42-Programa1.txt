@@ -1,5 +1,5 @@
 /*
-	Capitulo 42 de Arduino desde cero en Español.
+	Capitulo 42 de Arduino desde cero en EspaÃ±ol.
 	Programa que permite encender o apagar un LED conectado al pin digital numero 2
 	de Arduino obteniendo el valor desde el encabezado de la peticion de un 
 	navegador web y respondiendo con un texto acorde al estado establecido.
