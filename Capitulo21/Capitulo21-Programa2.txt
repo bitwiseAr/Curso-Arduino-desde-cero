@@ -1,5 +1,5 @@
 /*
-	Capitulo 21 de Arduino desde cero en Español.
+	Capitulo 21 de Arduino desde cero en EspaÃ±ol.
 	Programa que mediante las interrupciones generadas por el foto interruptor
 	modelo KY-010 conectado a interrupcion externa sobre el pin digital 2
 	enciende y apaga el LED incorporado con mayor frecuencia a medida que ingresan
