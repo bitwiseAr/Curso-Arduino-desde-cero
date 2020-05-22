@@ -7,7 +7,7 @@
 	Referirse al capitulo 41 del curso para mas informacion sobre los comandos AT
 	utilizados.
 
-	Autor: bitwiseAr  
+	Autor: bitwiseAr  MODIF caracartucho
 
 */
 
