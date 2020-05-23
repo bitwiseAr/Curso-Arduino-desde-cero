@@ -1,5 +1,5 @@
 /*
-	Capitulo 57 de Arduino desde cero en Español.
+	Capitulo 57 de Arduino desde cero en EspaÃ±ol.
 	Emulacion de joystick (HID) con Pro Micro para un mando analogico con modulo KY-023
 	y dos pulsadores. 
 	
