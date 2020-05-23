@@ -1,5 +1,5 @@
 /*
-	Capitulo 57 de Arduino desde cero en Español.
+	Capitulo 57 de Arduino desde cero en EspaÃ±ol.
 	Emulacion de mouse (HID) con Pro Micro para boton izquierdo y derecho
 	
 	https://www.youtube.com/c/BitwiseAr
