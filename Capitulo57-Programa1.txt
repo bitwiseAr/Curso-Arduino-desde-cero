@@ -1,0 +1,33 @@
+/*
+	Capitulo 57 de Arduino desde cero en Español.
+	Emulacion de teclado (HID) con Pro Micro escribiendo distintos textos
+	en funcion del pulsador presionado.
+	
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+#include "Keyboard.h"		// incluye libreria Keyboard
+
+#define PULSADOR_IZQUIERDO 4	// constante para identificar pulsador izquierdo en pin 4
+#define PULSADOR_DERECHO 5	// constante para identificar pulsador derecho en pin 5
+
+
+void setup() {
+  pinMode(PULSADOR_IZQUIERDO, INPUT_PULLUP);	// pin 4 como entrada con resistencia de pull-up
+  pinMode(PULSADOR_DERECHO, INPUT_PULLUP);	// pin 5 como entrada con resistencia de pull-up
+  Keyboard.begin();				// inicio de emulacion de teclado
+}
+
+void loop() {
+  if (digitalRead(PULSADOR_IZQUIERDO) == LOW) {		// si se ha presionado el pulsador izquierdo
+    Keyboard.println("Pulsador izquierdo presionado");	// imprime texto
+    delay(200);						// demora para evitar rebotes
+  }
+
+  if (digitalRead(PULSADOR_DERECHO) == LOW) {		// si se ha presionado el pulsador derecho
+    Keyboard.println("Pulsador derecho presionado");	// imprime texto
+    delay(200);						// demora para evitar rebotes
+  }
+}

@@ -1,0 +1,43 @@
+/*
+	Capitulo 57 de Arduino desde cero en Español.
+	Emulacion de teclado (HID) con Pro Micro para atajos copiar (Ctrl+c) 
+	y pegar (Ctrl+v)
+	
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+#include "Keyboard.h"			// incluye libreria Keyboard
+
+// Mac:					// dependiendo del sistema operativo
+//char ctrlKey = KEY_LEFT_GUI;  	// command para Mac
+// Windows y Linux:
+  char ctrlKey = KEY_LEFT_CTRL;		// Control para Windows y Linux
+
+#define PULSADOR_COPIAR 4	// constante para identificar pulsador copiar en pin 4
+#define PULSADOR_PEGAR 5	// constante para identificar pulsador pegar en pin 5
+
+void setup() {
+  pinMode(PULSADOR_COPIAR, INPUT_PULLUP);	// pin 4 como entrada con resistencia de pull-up
+  pinMode(PULSADOR_PEGAR, INPUT_PULLUP);	// pin 5 como entrada con resistencia de pull-up
+  Keyboard.begin();				// inicio de emulacion de teclado
+}
+
+void loop() {
+  if (digitalRead(PULSADOR_COPIAR) == LOW) {	// si se ha presionado el pulsador de copiar
+    Keyboard.press(ctrlKey);			// emula presion de tecla Control
+    Keyboard.press('c');			// emila presion de tecla c
+    delay(100);					// demora de 100 mseg.
+    Keyboard.releaseAll();			// deja de presionar las teclas anteriores
+    delay(1000);				// demora de 1 seg.
+  }
+
+  if (digitalRead(PULSADOR_PEGAR) == LOW) {	// si se ha presionado el pulsador de pegar
+    Keyboard.press(ctrlKey);			// emula presion de tecla Control
+    Keyboard.press('v');			// emula presion de tecla v
+    delay(100);					// demora de 100 mseg.
+    Keyboard.releaseAll();			// deja de presionar las teclas anteriores
+    delay(1000);				// demora de 1 seg.
+  }
+}

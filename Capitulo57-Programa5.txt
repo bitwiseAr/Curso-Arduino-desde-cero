@@ -1,0 +1,48 @@
+/*
+	Capitulo 57 de Arduino desde cero en Español.
+	Emulacion de joystick (HID) con Pro Micro para un mando analogico con modulo KY-023
+	y dos pulsadores. 
+	
+	Requiere instalar libreria: https://github.com/MHeironimus/ArduinoJoystickLibrary
+	
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+#include <Joystick.h>	// incluye libreria Joystick
+
+#define BOTON_1 4	// constante para identificar boton 1 en pin 4
+#define BOTON_2 5	// constante para identificar boton 2 en pin 5
+
+#define DEMORA 100	// constante para demora entre lectura de valores
+
+Joystick_ Joystick;	// crea instancia del objeto con el nombre Joystick
+
+void setup() {
+  pinMode(BOTON_1, INPUT_PULLUP);	// pin 4 como entrada con resistencia de pull-up
+  pinMode(BOTON_2, INPUT_PULLUP);	// pin 5 como entrada con resistencia de pull-up
+  Joystick.begin();			// inicio de emulacion de joystick
+  Joystick.setYAxisRange(1023, 0);  	// invierte eje Y para modulo KY-023
+}
+
+void loop() { 
+  Joystick.setXAxis(analogRead(A0));	// establece eje x con valor leido de A0
+  Joystick.setYAxis(analogRead(A1));	// establece eje y con valor leido de A1
+
+  if (digitalRead(BOTON_1) == LOW) {	// si se ha presionado el pulsador de boton 1
+    Joystick.setButton(0, 1);		// establece boton 1 (indice 0) como presionado
+  }
+  else{
+    Joystick.setButton(0, 0);		// sino establece boton 1 como no presionado
+  }
+
+  if (digitalRead(BOTON_2) == LOW) {	// si se ha presionado el pulsador de boton 2
+    Joystick.setButton(1, 1);		// establece boton 2 (indice 1) como presionado
+  }
+  else{
+    Joystick.setButton(1, 0);		// sino establece boton 2 como no presionado		
+  }
+
+  delay(DEMORA);			// demora de 100 mseg.
+}
