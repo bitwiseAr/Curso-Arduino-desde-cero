@@ -1,5 +1,5 @@
 /*
-	Capitulo 57 de Arduino desde cero en Español.
+	Capitulo 57 de Arduino desde cero en EspaÃ±ol.
 	Emulacion de teclado (HID) con Pro Micro escribiendo distintos textos
 	en funcion del pulsador presionado.
 	
