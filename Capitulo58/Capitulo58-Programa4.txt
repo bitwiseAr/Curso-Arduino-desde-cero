@@ -1,8 +1,8 @@
 /*
-	Capitulo 58 de Arduino desde cero en Español.
+	Capitulo 58 de Arduino desde cero en EspaÃ±ol.
 	Uso del modulo TM1637 en 4 digitos y 7 segmentos para simular la presentacion
 	de una valor de temperatura y los simbolos especiales de grados celsius.
-	Requiere librería: TM1637
+	Requiere librerÃ­a: TM1637
 	
 	https://www.youtube.com/c/BitwiseAr
 	Autor: bitwiseAr  
