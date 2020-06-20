@@ -1,0 +1,36 @@
+/*
+	Capitulo 58 de Arduino desde cero en Español.
+	Uso del modulo TM1637 en 4 digitos y 7 segmentos para demostrar la capacidad
+	de visualizar numeros en diferentes posiciones del display.
+	Requiere librería: TM1637
+	
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+#include <TM1637Display.h>		// incluye libreria TM1637
+
+#define CLK 2				// CLK a pin 2
+#define DIO 3				// DIO a pin 3
+
+TM1637Display display(CLK, DIO);	// crea objeto
+
+void setup(){
+  display.setBrightness(5);		// establece nivel de brillo
+}
+
+void loop(){
+  display.showNumberDec(1, false);	// muestra numero 1 sin ceros precedentes
+  delay(2000);				// demora de 2 segundos
+  display.showNumberDec(1, true);	// muestra numero 1 con ceros precedentes
+  delay(2000);				// demora de 2 segundos
+  display.clear();			// limpia display (apaga digitos)
+  
+  for(int i = 0; i < 4; i++){			// bucle que repite 4 veces
+    display.showNumberDec(i, false, 1, i);	// muestra numero en misma posicion
+						// que la variable de iteracion i
+    delay(2000);				// demora de 2 segundos
+    display.clear();				// limpia display (apaga digitos)
+  }
+}

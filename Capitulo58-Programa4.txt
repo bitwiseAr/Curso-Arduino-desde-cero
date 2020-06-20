@@ -1,0 +1,31 @@
+/*
+	Capitulo 58 de Arduino desde cero en Español.
+	Uso del modulo TM1637 en 4 digitos y 7 segmentos para simular la presentacion
+	de una valor de temperatura y los simbolos especiales de grados celsius.
+	Requiere librería: TM1637
+	
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+		
+#include <TM1637Display.h>		// incluye libreria TM1637
+
+#define CLK 2				// CLK a pin 2
+#define DIO 3				// DIO a pin 3
+
+TM1637Display display(CLK, DIO);	// crea objeto
+
+const uint8_t celsius[] = {		// array para almacenar caracteres especiales
+  SEG_A | SEG_B | SEG_G | SEG_F,  	// cero volado
+  SEG_A | SEG_F | SEG_E | SEG_D   	// C
+};
+
+void setup(){
+  display.setBrightness(5);		// establece nivel de brillo
+}
+
+void loop(){
+  display.showNumberDec(21, false, 2, 0);	// muestra valor estatico 21
+  display.setSegments(celsius, 2, 2);		// muestra caracteres de grados celsius
+}
