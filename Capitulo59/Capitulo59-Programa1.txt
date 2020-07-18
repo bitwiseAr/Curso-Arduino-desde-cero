@@ -1,5 +1,5 @@
 /*
-	Capitulo 59 de Arduino desde cero en Español.
+	Capitulo 59 de Arduino desde cero en EspaÃ±ol.
 	Uso del modulo KY-039 para mostrar en monitor serie los latidos por minuto
 	del corazon.
 	
