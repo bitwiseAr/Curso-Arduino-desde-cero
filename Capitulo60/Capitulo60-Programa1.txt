@@ -1,5 +1,5 @@
 /*
-	Capitulo 60 de Arduino desde cero en Español.
+	Capitulo 60 de Arduino desde cero en EspaÃ±ol.
 	Visualizacion por monitor serie de las lecturas del sensor BH1750.
 	Requiere instalacion de libreria BH1750
 
