@@ -1,0 +1,28 @@
+/*
+	Capitulo 60 de Arduino desde cero en Español.
+	Visualizacion por monitor serie de las lecturas del sensor BH1750.
+	Requiere instalacion de libreria BH1750
+
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+#include <BH1750.h>	// incluye libreria BH1750
+#include <Wire.h>	// incluye libreria para bus I2C
+
+BH1750 sensor;		// crea objeto con nombre sensor
+
+void setup(){
+  Wire.begin();		// inicializa bus I2C
+  sensor.begin();	// inicializa sensor con valores por defecto
+  Serial.begin(9600);	// inicializa monitor serie a 9600 bps
+}
+
+void loop() {
+  unsigned int lux = sensor.readLightLevel();	// lee y almacena lectura de sensor
+  Serial.print("Nivel: ");	// muestra texto
+  Serial.print(lux);		// muestra valor de variable lux
+  Serial.println(" lx");	// muestra texto y salto de linea
+  delay(1000);			// demora de 1 seg.
+}

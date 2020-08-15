@@ -1,0 +1,42 @@
+/*
+	Capitulo 60 de Arduino desde cero en Español.
+	Visualizacion por monitor serie de las lecturas del sensor BH1750, enciende LED
+	con luz menor a 30 lux y apagado con mayor a 50 lux (interruptor crepuscular)
+
+	Requiere instalacion de libreria BH1750
+
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+#include <BH1750.h>	// incluye libreria BH1750
+#include <Wire.h>	// incluye libreria para bus I2C
+
+BH1750 sensor;		// crea objeto con nombre sensor
+
+#define LED 2		// reemplaza ocurrencia de LED por 2
+#define UMBRAL 30	// reemplaza ocurrencia de UMBRAL por 30
+
+void setup(){
+  Wire.begin();		// inicializa bus I2C
+  sensor.begin();	// inicializa sensor con valores por defecto
+  Serial.begin(9600);	// inicializa monitor serie a 9600 bps
+  pinMode(LED, OUTPUT);	// pin 2 como salida
+}
+
+void loop() {
+  unsigned int lux = sensor.readLightLevel();	// lee y almacena lectura de sensor
+  Serial.print("Nivel: ");	// muestra texto
+  Serial.print(lux);		// muestra valor de variable lux
+  Serial.println(" lx");	// muestra texto y salto de linea
+
+  if (lux < UMBRAL){		// si lectura de sensor es menor a UMBRAL
+    digitalWrite(LED, HIGH);	// enciende LED
+  }
+  else if (lux > UMBRAL + 20){	// si lectura de sensor es mayor a UMBRAL+20
+    digitalWrite(LED, LOW);	// apaga LED
+  }
+
+  delay(1000);			// demora de 1 seg.
+}
