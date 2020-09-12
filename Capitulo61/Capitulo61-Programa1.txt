@@ -1,5 +1,5 @@
 /*
-	Capitulo 61 de Arduino desde cero en Español.
+	Capitulo 61 de Arduino desde cero en EspaÃ±ol.
 	Visualizacion por monitor serie de las lecturas del sensor de color
 	TCS3200 en microsegundos
 
