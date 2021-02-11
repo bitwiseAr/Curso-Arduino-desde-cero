@@ -1,5 +1,5 @@
 /*
-	Capitulo 26 de Arduino desde cero en Español.
+	Capitulo 26 de Arduino desde cero en EspaÃ±ol.
 	Programa que permite mostrar en el monitor serial el codigo correspondiente al boton
 	presionado en un control remoto mediante el modulo receptor KY-022. Requiere 
 	la instalacion de la libreria IRremote. Codigo modificado para ser apto con version 3
