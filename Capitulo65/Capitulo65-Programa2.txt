@@ -1,5 +1,5 @@
 /*
-	Capitulo 65 de Arduino desde cero en Español.
+	Capitulo 65 de Arduino desde cero en EspaÃ±ol.
 	Visualizacion por monitor serie de las lecturas del MPU6050 para yaw, pitch y roll.
 	Intercala texto si el pitch es mayor a 10 grados o menor a -10 grados a modo de ejemplo
 	para tomar una accion.
