@@ -1,5 +1,5 @@
 /*
-	Capitulo 65 de Arduino desde cero en Español.
+	Capitulo 65 de Arduino desde cero en EspaÃ±ol.
 	Visualizacion por monitor serie de las lecturas del MPU6050 para yaw, pitch y roll.
 	Requiere librerias I2cdev y Simple_MPU6050
 
