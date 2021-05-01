@@ -1,0 +1,43 @@
+/*
+	Capitulo 66 de Arduino desde cero en Español.
+	Prueba de modulo DAC MCP4725 enviando 5 voltajes a intervalos de 5 segundos y ajustando con
+	valor medido de VCC en el modulo de 4.83 V
+	Requiere libreria Adafruit_MCP4725
+
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+#include <Wire.h>			// incluye libreria Wire
+#include <Adafruit_MCP4725.h>		// incluye libreria Adafruit MCP4725
+
+Adafruit_MCP4725 dac;			// crear objeto con nombre dac
+
+void setup(void) {
+  Serial.begin(9600);			// inicializa monitor serie a 9600 bps
+  dac.begin(0x62);			// inicializa DAC con direccion 0x62
+  Serial.println("Iniciando...");	// texto estatico
+}
+
+void loop(void) {
+  Serial.println("1V");    		// texto de voltaje a establecer
+  dac.setVoltage((1*4095)/4.85, false);	// establece 1V usando regla de tres simple y VCC = 4.85V
+  delay(5000);				// demora de 5 segundos
+
+  Serial.println("2V");  		// texto de voltaje a establecer  
+  dac.setVoltage((2*4095)/4.85, false);	// establece 2V usando regla de tres simple y VCC = 4.85V
+  delay(5000);				// demora de 5 segundos
+
+  Serial.println("3V");    		// texto de voltaje a establecer
+  dac.setVoltage((3*4095)/4.85, false);	// establece 3V usando regla de tres simple y VCC = 4.85V
+  delay(5000);				// demora de 5 segundos
+
+  Serial.println("4V");   		// texto de voltaje a establecer 
+  dac.setVoltage((4*4095)/4.85, false);	// establece 4V usando regla de tres simple y VCC = 4.85V
+  delay(5000);				// demora de 5 segundos
+
+  Serial.println("5V");   		// texto de voltaje a establecer 
+  dac.setVoltage((4.85*4095)/4.85, false);	// establece 4.85V usando regla de tres simple y VCC = 4.85V
+  delay(5000);				// demora de 5 segundos
+}
