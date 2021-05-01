@@ -1,5 +1,5 @@
 /*
-	Capitulo 66 de Arduino desde cero en Español.
+	Capitulo 66 de Arduino desde cero en EspaÃ±ol.
 	Prueba de modulo DAC MCP4725 enviando 5 voltajes a intervalos de 5 segundos.
 	Requiere libreria Adafruit_MCP4725
 
