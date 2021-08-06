@@ -1,0 +1,41 @@
+/*
+	Capitulo 68 de Arduino desde cero en Español.
+	Usando dos sensores tactiles capacitivos TTP223B para controlar el brillo de
+	un LED mediante PWM.
+
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+#define LED 3			// LED en pin digital 3
+#define TTP223B_MAS 4		// sensor de incremento en pin digital 4
+#define TTP223B_MENOS 5		// sensor de decremento en pin digital 5
+
+void setup() {
+  pinMode(LED, OUTPUT);			// pin 3 como salida
+  pinMode(TTP223B_MAS, INPUT);		// pin 4 como entrada
+  pinMode(TTP223B_MENOS, INPUT);	// pin 5 como entrada
+  int BRILLO = 0;			// variable para almacenar valor de brillo
+}
+
+void loop() {
+  if (digitalRead(TTP223B_MAS) == HIGH){	// si se presiono en sensor de incremento
+    BRILLO = BRILLO + 20;			// incrementa variable BRILLO en 20
+    if (BRILLO >= 255){				// consulta si BRILLO es mayor o igual a 255
+      BRILLO = 255;				// si es el caso asigna a BRILLO 255
+    }
+    analogWrite(LED, BRILLO);			// PWM en LED con valor de BRILLO
+    delay(100);					// demora de 100 mseg.
+  }
+  else {
+    if (digitalRead(TTP223B_MENOS) == HIGH){	// si se presiono en sensor de decremento
+      BRILLO = BRILLO - 20;			// decrementa variable BRILLO en 20
+    if (BRILLO <= 0){				// consulta si BRILLO es menor o igual a 0
+      BRILLO = 0;				// si es el caso asigna a BRILLO 0
+    }
+    analogWrite(LED, BRILLO);			// PWM en LED con valor de BRILLO
+    delay(100);					// demora de 100 mseg.
+  }
+}
+}

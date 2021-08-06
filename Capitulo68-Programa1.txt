@@ -1,0 +1,26 @@
+/*
+	Capitulo 68 de Arduino desde cero en Español.
+	Usando un sensor tactil capacitivo TTP223B para encender un LED y experimentos practicos
+	con distintos materiales (papel, carton, madera) intermedios.
+
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+#define LED 3			// LED en pin digital 3
+#define TTP223B 4		// SIG de sensor en pin digital 4
+
+void setup() {
+  pinMode(LED, OUTPUT);		// pin 3 como salida
+  pinMode(TTP223B, INPUT);	// pin 4 como entrada
+}
+
+void loop() {
+  if (digitalRead(TTP223B) == HIGH){	// si se presiono el sensor
+    digitalWrite(LED, HIGH);		// enciende LED
+  } else {
+    digitalWrite(LED, LOW);		// sino apaga LED
+    }
+  delay(50);				// demora de 50 mseg.
+}
