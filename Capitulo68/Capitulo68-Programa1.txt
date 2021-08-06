@@ -1,5 +1,5 @@
 /*
-	Capitulo 68 de Arduino desde cero en Español.
+	Capitulo 68 de Arduino desde cero en EspaÃ±ol.
 	Usando un sensor tactil capacitivo TTP223B para encender un LED y experimentos practicos
 	con distintos materiales (papel, carton, madera) intermedios.
 
