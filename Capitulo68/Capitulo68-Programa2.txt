@@ -1,5 +1,5 @@
 /*
-	Capitulo 68 de Arduino desde cero en Español.
+	Capitulo 68 de Arduino desde cero en EspaÃ±ol.
 	Usando dos sensores tactiles capacitivos TTP223B para controlar el brillo de
 	un LED mediante PWM.
 
