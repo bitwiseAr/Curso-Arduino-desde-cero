@@ -1,0 +1,153 @@
+/*
+	Capitulo 69 de Arduino desde cero en Español.
+	Control del LED RGB incorporado en placa Nano RP2040 Connect mediante punto de acceso (AP) WiFi.
+
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+// Codigo original de: https://docs.arduino.cc/tutorials/nano-rp2040-connect/rp2040-web-server-rgb
+// Autor original: Karl Soderby
+// Modificacion y traduccion: bitwiseAr
+
+#include <SPI.h>			// incluye libreria de bus SPI
+#include <WiFiNINA.h>			// incluye libreria de modulo WiFi Nina W102
+
+char ssid[] = "NanoRP2040Connect";	// nombre de punto de acceso (AP)
+char pass[] = "noes123456";		// password de punto de acceso
+int keyIndex = 0;			// utilizado unicamente para WEP
+
+int status = WL_IDLE_STATUS;
+WiFiServer server(80);			// creacion de servidor web en puerto 80
+
+void setup() {
+  Serial.begin(9600);			// inicializacion de monitor serie a 9600 bps
+  while (!Serial) {			// espera a disponibilidad de monitor serie
+  }
+
+  Serial.println("Servidor de Punto de Acceso");
+
+  pinMode(LEDR, OUTPUT);		// componente rojo de LED RGB como salida
+  pinMode(LEDG, OUTPUT);		// componente verde de LED RGB como salida
+  pinMode(LEDB, OUTPUT);		// componente azul de LED RGB como salida
+
+  if (WiFi.status() == WL_NO_MODULE) {	// obteniendo estado de la conexion
+    Serial.println("Error en comunicacion con modulo WiFi!");
+    while (true);
+  }
+
+  String fv = WiFi.firmwareVersion();	// verificacion de version de firmware
+  if (fv < WIFI_FIRMWARE_LATEST_VERSION) {
+    Serial.println("Por favor actualice el firmware");
+  }
+
+  // por defecto la direccion IP local es: 192.168.4.1
+  // se puede establece una especifica con:
+  // WiFi.config(IPAddress(10, 0, 0, 1));
+
+  Serial.print("Creando punto de acceso de nombre: ");
+  Serial.println(ssid);
+
+  status = WiFi.beginAP(ssid, pass);
+  if (status != WL_AP_LISTENING) {
+    Serial.println("Error al crear punto de acceso");
+    while (true);
+  }
+  delay(10000);				// demora de 10 seg.
+  server.begin();			// inicio de servidor web
+  printWiFiStatus();			// funcion para mostrar estado de la conexion
+}
+
+
+void loop() {
+  if (status != WiFi.status()) {
+    status = WiFi.status();
+
+    if (status == WL_AP_CONNECTED) {
+      Serial.println("Dispositivo conectado al Punto de Acceso");
+    } else {
+      Serial.println("Dispositivo desconectado del Punto de Acceso");
+    }
+  }
+  
+  WiFiClient client = server.available();	// escucha por conexion de un cliente
+
+   if (client) {				// si hay un cliente conectado
+    Serial.println("nuevo cliente");
+    String currentLine = "";			// string para almacenar datos del cliente
+    while (client.connected()) {		// mientras el cliente siga conectado
+      if (client.available()) {
+        char c = client.read();			// leer de a un byte por vez
+        Serial.write(c);			// mostrar dicho byte por monitor serie
+        if (c == '\n') {			// si el byte es una nueva linea NL
+          if (currentLine.length() == 0) {
+            client.println("HTTP/1.1 200 OK");		// inicio del encabezado HTTP 1.1
+            client.println("Content-type:text/html");	// tipo de contenido texto/html
+            client.println();
+            
+            client.print("<style>");			// estilo de los 6 botones redondos a mostrar
+            client.print(".container {margin: 0 auto; text-align: center; margin-top: 100px;}");
+            client.print("button {color: white; width: 100px; height: 100px;");
+            client.print("border-radius: 50%; margin: 20px; border: none; font-size: 20px; outline: none; transition: all 0.2s;}");
+            client.print(".red{background-color: rgb(196, 39, 39);}");
+            client.print(".green{background-color: rgb(39, 121, 39);}");
+            client.print(".blue {background-color: rgb(5, 87, 180);}");
+            client.print(".off{background-color: grey;}");
+            client.print("button:hover{cursor: pointer; opacity: 0.7;}");
+            client.print("</style>");			// fin de estilo
+            client.print("<div class='container'>");
+            client.print("<button class='red' type='submit' onmousedown='location.href=\"/RH\"'>ON</button>");		// rojo ON
+            client.print("<button class='off' type='submit' onmousedown='location.href=\"/RL\"'>OFF</button><br>");	// rojo OFF
+            client.print("<button class='green' type='submit' onmousedown='location.href=\"/GH\"'>ON</button>");	// verde ON
+            client.print("<button class='off' type='submit' onmousedown='location.href=\"/GL\"'>OFF</button><br>");	// verde OFF
+            client.print("<button class='blue' type='submit' onmousedown='location.href=\"/BH\"'>ON</button>");		// azul ON
+            client.print("<button class='off' type='submit' onmousedown='location.href=\"/BL\"'>OFF</button>");		// azul OFF
+            client.print("</div>");
+
+            client.println();
+            break;
+          } else {
+            currentLine = "";
+          }
+        } else if (c != '\r') {
+          currentLine += c;
+        }
+
+        if (currentLine.endsWith("GET /RH")) {		// si el metodo GET obtenido de la URL es RH
+          digitalWrite(LEDR, HIGH);			// enciende componente rojo
+        }
+        if (currentLine.endsWith("GET /RL")) {		// si el metodo GET obtenido de la URL es RL
+          digitalWrite(LEDR, LOW);              	// apaga componente rojo
+        }
+        if (currentLine.endsWith("GET /GH")) {		// si el metodo GET obtenido de la URL es GH
+          digitalWrite(LEDG, HIGH);              	// enciende componente verde
+        }
+        if (currentLine.endsWith("GET /GL")) {		// si el metodo GET obtenido de la URL es GL
+          digitalWrite(LEDG, LOW);           		// apaga componente verde
+        }
+        if (currentLine.endsWith("GET /BH")) {		// si el metodo GET obtenido de la URL es BH
+          digitalWrite(LEDB, HIGH);              	// enciende componente azul
+        }
+        if (currentLine.endsWith("GET /BL")) {		// si el metodo GET obtenido de la URL es BL
+          digitalWrite(LEDB, LOW);             		// apaga componente azul
+        }
+      }
+    }
+    client.stop();
+    Serial.println("cliente desconectado");
+  }
+}
+
+void printWiFiStatus() {
+  Serial.print("SSID: ");
+  Serial.println(WiFi.SSID());		// muestra nombre del punto de acceso
+
+  IPAddress ip = WiFi.localIP();
+  Serial.print("Direccion IP: ");
+  Serial.println(ip);			// muestra direccion IP del punto de acceso
+					// texto de URL a donde ingresar mediante navegador web
+  Serial.print("Ingresar desde un navegador web a http://");
+  Serial.println(ip);
+
+}
