@@ -1,5 +1,5 @@
 /*
-	Capitulo 70 de Arduino desde cero en Español.
+	Capitulo 70 de Arduino desde cero en EspaÃ±ol.
 	Contador binario con LEDs conectados a cada salida de un 74HC595.
 
 	https://www.youtube.com/c/BitwiseAr
