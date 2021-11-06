@@ -1,5 +1,5 @@
 /*
-	Capitulo 70 de Arduino desde cero en Español.
+	Capitulo 70 de Arduino desde cero en EspaÃ±ol.
 	Encendiendo el LED12 de un circuito donde se encuentran encadenados dos 74HC595.
 	Utilizando el operador de desplazamiento de bits a derecha se preserva la parte alta
 	del numero de 16 bits, usando la funcion shiftOut en dos ocasiones para enviar el
