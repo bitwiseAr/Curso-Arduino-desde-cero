@@ -1,5 +1,5 @@
 /*
-	Capitulo 70 de Arduino desde cero en Español.
+	Capitulo 70 de Arduino desde cero en EspaÃ±ol.
 	Encendiendo tres LEDs especificos conectados a las salidas de un 74HC595 a modo
 	de ejemplo.
 
