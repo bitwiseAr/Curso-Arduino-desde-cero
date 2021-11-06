@@ -1,0 +1,30 @@
+/*
+	Capitulo 70 de Arduino desde cero en Español.
+	Contador binario con LEDs conectados a cada salida de un 74HC595.
+
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+
+#define SER 7		// pin 7 a SER del 74HC595
+#define RCLK 8		// pin 8 a RCLK del 74HC595
+#define SRCLK 9		// pin 9 a SRCLK del 74HC595
+
+
+void setup ()
+{
+  pinMode(SER, OUTPUT);		// pin establecido como salida
+  pinMode(RCLK, OUTPUT);	// pin establecido como salida
+  pinMode(SRCLK, OUTPUT);	// pin establecido como salida
+}
+ 
+void loop() {
+  for (int i = 0; i < 256; i++) {	// bucle que repite con variable de iteracion i de 0 a 255
+    digitalWrite(RCLK, LOW);		// nivel bajo a registro de almacenamiento
+    shiftOut(SER, SRCLK, MSBFIRST, i);	// funcion para enviar de forma serie el valor de i
+    digitalWrite(RCLK, HIGH);		// nivel alto a registro de almacenamiento
+    delay(500);				// demora de medio segundo
+  }
+}

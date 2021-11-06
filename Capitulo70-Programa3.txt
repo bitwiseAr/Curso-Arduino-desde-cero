@@ -1,0 +1,48 @@
+/*
+	Capitulo 70 de Arduino desde cero en Español.
+	Encendiendo el LED12 de un circuito donde se encuentran encadenados dos 74HC595.
+	Utilizando el operador de desplazamiento de bits a derecha se preserva la parte alta
+	del numero de 16 bits, usando la funcion shiftOut en dos ocasiones para enviar el
+	numero completo.
+
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+
+#define SER 7		// pin 7 a SER del 74HC595
+#define RCLK 8		// pin 8 a RCLK del 74HC595
+#define SRCLK 9		// pin 9 a SRCLK del 74HC595
+
+#define LED0 1		// valor equivalente en decimal al LED0
+#define LED1 2		// valor equivalente en decimal al LED1
+#define LED2 4		// valor equivalente en decimal al LED2
+#define LED3 8		// valor equivalente en decimal al LED3
+#define LED4 16		// valor equivalente en decimal al LED4
+#define LED5 32		// valor equivalente en decimal al LED5
+#define LED6 64		// valor equivalente en decimal al LED6
+#define LED7 128	// valor equivalente en decimal al LED7
+#define LED8 256	// valor equivalente en decimal al LED8
+#define LED9 512	// valor equivalente en decimal al LED9
+#define LED10 1024	// valor equivalente en decimal al LED10
+#define LED11 2048	// valor equivalente en decimal al LED11
+#define LED12 4096	// valor equivalente en decimal al LED12
+#define LED13 8192	// valor equivalente en decimal al LED13
+#define LED14 16384	// valor equivalente en decimal al LED14
+#define LED15 32768	// valor equivalente en decimal al LED15
+
+void setup ()
+{
+  pinMode(SER, OUTPUT);		// pin establecido como salida
+  pinMode(RCLK, OUTPUT);	// pin establecido como salida
+  pinMode(SRCLK, OUTPUT);	// pin establecido como salida
+}
+ 
+void loop() {
+  digitalWrite(RCLK, LOW);				// nivel bajo a registro de almacenamiento
+  shiftOut(SER, SRCLK, MSBFIRST, (LED12 >> 8));  	// desplazamiento de 8 posiciones para preservar parte alta
+  shiftOut(SER, SRCLK, MSBFIRST, LED12);         	// numero de 16 bits por defecto mantiene la parte baja
+  digitalWrite(RCLK, HIGH);				// nivel alto a registro de almacenamiento
+  delay(500);						// demora de medio segundo
+}
