@@ -3,8 +3,9 @@
 	Simple programa que muestra en la pantalla de un modulo LCD 1602A mediante adaptador
 	LCD I2C un texto y cursor. Adaptador basado en
 	circuito integrado PCF8574 y libreria LiquidCrystal_I2C descargada desde:
-	https://bitbucket.org/fmalpartida/new-liquidcrystal/downloads/
-
+	https://github.com/fmalpartida/New-LiquidCrystal
+	
+	https://www.youtube.com/c/BitwiseAr
 	Autor: bitwiseAr  
 
 */
