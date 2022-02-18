@@ -1,0 +1,60 @@
+/*
+	Capitulo 72 de Arduino desde cero en Español.
+	Arduino IoT Cloud con Nano RP2040 Connect y DHT22. Instrucciones de ubicacion de segmentos de
+	codigo ya que la estructura es generada de forma automatica por la plataforma.
+
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+
+Antes del setup():
+
+#define DHTPIN 4		// pin DATA de DHT22 en pin 4
+DHT dht(DHTPIN, DHT22);		// crea objeto
+
+
+Dentro del setup():
+
+pinMode(LEDR, OUTPUT);		// GPIO de componente rojo como salida
+pinMode(LEDG, OUTPUT);		// GPIO de componente verde como salida
+pinMode(LEDB, OUTPUT);		// GPIO de componente azul como salida
+dht.begin();			// inicializa sensor
+
+
+Dentro del loop():
+
+dht_temperatura = dht.readTemperature();	// obtiene temperatura y almacena en variable
+dht_humedad = dht.readHumidity();		// obtiene humedad y almacena en variable
+delay(2000);					// demora de 2 segundos entre lecturas
+
+
+Dentro de función onLedVerdeChange():
+
+if (led_verde) {			// si variable asume un valor verdadero
+    digitalWrite(LEDG, HIGH);		// enciende componente verde de LED RGB
+  }
+  else{					// si variable asume un valor falso
+    digitalWrite(LEDG, LOW);		// apaga componente verde de LED RGB
+  }
+
+
+Dentro de función onLedRojoChange():
+
+if (led_rojo) {				// si variable asume un valor verdadero
+    digitalWrite(LEDR, HIGH);		// enciende componente rojo de LED RGB
+  }
+  else{					// si variable asume un valor falso
+    digitalWrite(LEDR, LOW);		// apaga componente rojo de LED RGB
+  }
+
+
+Dentro de función onLedAzulChange():
+
+if (led_azul) {				// si variable asume un valor verdadero
+    digitalWrite(LEDB, HIGH);		// enciende componente azul de LED RGB
+  }
+  else{					// si variable asume un valor falso
+    digitalWrite(LEDB, LOW);		// apaga componente azul de LED RGB
+  }
