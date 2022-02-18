@@ -1,5 +1,5 @@
 /*
-	Capitulo 72 de Arduino desde cero en Español.
+	Capitulo 72 de Arduino desde cero en EspaÃ±ol.
 	Arduino IoT Cloud con Nano RP2040 Connect y DHT22. Instrucciones de ubicacion de segmentos de
 	codigo ya que la estructura es generada de forma automatica por la plataforma.
 
@@ -30,7 +30,7 @@ dht_humedad = dht.readHumidity();		// obtiene humedad y almacena en variable
 delay(2000);					// demora de 2 segundos entre lecturas
 
 
-Dentro de función onLedVerdeChange():
+Dentro de funciÃ³n onLedVerdeChange():
 
 if (led_verde) {			// si variable asume un valor verdadero
     digitalWrite(LEDG, HIGH);		// enciende componente verde de LED RGB
@@ -40,7 +40,7 @@ if (led_verde) {			// si variable asume un valor verdadero
   }
 
 
-Dentro de función onLedRojoChange():
+Dentro de funciÃ³n onLedRojoChange():
 
 if (led_rojo) {				// si variable asume un valor verdadero
     digitalWrite(LEDR, HIGH);		// enciende componente rojo de LED RGB
@@ -50,7 +50,7 @@ if (led_rojo) {				// si variable asume un valor verdadero
   }
 
 
-Dentro de función onLedAzulChange():
+Dentro de funciÃ³n onLedAzulChange():
 
 if (led_azul) {				// si variable asume un valor verdadero
     digitalWrite(LEDB, HIGH);		// enciende componente azul de LED RGB
