@@ -1,0 +1,43 @@
+/*
+	Capitulo 73 de Arduino desde cero en Español.
+	Sensor BME280 conectado a placa Nano RP2040 Connect y configuracion mediante Arduino IoT Cloud.
+	Visualización de datos por monitor serie. 
+	Instrucciones de ubicacion de segmentos de codigo ya que la estructura es generada de forma automatica por la plataforma.
+
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+
+Antes del setup():
+
+#include <BME280I2C.h>		// incluye libreria especifica para BME280
+
+BME280I2C bme;			// crea un objeto de nombre bme
+
+
+Dentro del setup():
+
+while(!bme.begin())		// bucle que permanece si no se ha inicializado el BME280
+  {
+    Serial.println("No se pudo encontrar un BME280 conectado");
+    delay(1000);
+  }
+
+
+Dentro del loop():
+
+float temperatura, humedad, presion;		// variables para almacenar valores del sensor
+bme.read(presion, temperatura, humedad);	// funcion para obtener y asignar lecturas a variables
+Serial.print("Temperatura: ");			// muestra por Monitor texto estatico
+Serial.print(temperatura);			// muestra por Monitor valor de variable
+Serial.print(" °C");				// muestra por Monitor serie grados Celsius
+Serial.print("\tHumedad: ");			// muestra por Monitor espacio de tabulacion y texto estatico
+Serial.print(humedad);				// muestra por Monitor valor de variable
+Serial.print(" %");				// muestra por Monitor simbolo porcentaje
+Serial.print("\tPresion: ");			// muestra por Monitor espacio de tabulacion y texto estatico
+Serial.print(presion);				// muestra por Monitor valor de variable
+Serial.println(" hPa");				// muestra por Monitor hecto Pascales y salto de linea
+  
+delay(5000);					// demora de 5 segundos

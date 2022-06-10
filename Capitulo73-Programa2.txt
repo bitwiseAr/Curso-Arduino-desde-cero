@@ -1,0 +1,33 @@
+/*
+	Capitulo 73 de Arduino desde cero en Español.
+	Sensor BME280 conectado a placa Nano RP2040 Connect y configuracion mediante Arduino IoT Cloud.
+	Visualización de datos mediante Dashboard de la plataforma (Panel de Control) 
+	Instrucciones de ubicacion de segmentos de codigo ya que la estructura es generada de forma automatica por la plataforma.
+
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+
+Antes del setup():
+
+#include <BME280I2C.h>		// incluye libreria especifica para BME280
+
+BME280I2C bme;			// crea un objeto de nombre bme
+
+
+Dentro del setup():
+
+while(!bme.begin())		// bucle que permanece si no se ha inicializado el BME280
+  {
+    Serial.println("No se pudo encontrar un BME280 conectado");
+    delay(1000);
+  }
+
+
+Dentro del loop():
+
+bme.read(bme280_presion, bme280_temperatura, bme280_humedad);	// funcion para obtener y asignar lecturas a variables
+  
+delay(5000);			// demora de 5 segundos
