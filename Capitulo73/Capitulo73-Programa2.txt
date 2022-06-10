@@ -1,7 +1,7 @@
 /*
-	Capitulo 73 de Arduino desde cero en Español.
+	Capitulo 73 de Arduino desde cero en EspaÃ±ol.
 	Sensor BME280 conectado a placa Nano RP2040 Connect y configuracion mediante Arduino IoT Cloud.
-	Visualización de datos mediante Dashboard de la plataforma (Panel de Control) 
+	VisualizaciÃ³n de datos mediante Dashboard de la plataforma (Panel de Control) 
 	Instrucciones de ubicacion de segmentos de codigo ya que la estructura es generada de forma automatica por la plataforma.
 
 	https://www.youtube.com/c/BitwiseAr
