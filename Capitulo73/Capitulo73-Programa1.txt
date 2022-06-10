@@ -1,7 +1,7 @@
 /*
-	Capitulo 73 de Arduino desde cero en Español.
+	Capitulo 73 de Arduino desde cero en EspaÃ±ol.
 	Sensor BME280 conectado a placa Nano RP2040 Connect y configuracion mediante Arduino IoT Cloud.
-	Visualización de datos por monitor serie. 
+	VisualizaciÃ³n de datos por monitor serie. 
 	Instrucciones de ubicacion de segmentos de codigo ya que la estructura es generada de forma automatica por la plataforma.
 
 	https://www.youtube.com/c/BitwiseAr
@@ -32,7 +32,7 @@ float temperatura, humedad, presion;		// variables para almacenar valores del se
 bme.read(presion, temperatura, humedad);	// funcion para obtener y asignar lecturas a variables
 Serial.print("Temperatura: ");			// muestra por Monitor texto estatico
 Serial.print(temperatura);			// muestra por Monitor valor de variable
-Serial.print(" °C");				// muestra por Monitor serie grados Celsius
+Serial.print(" Â°C");				// muestra por Monitor serie grados Celsius
 Serial.print("\tHumedad: ");			// muestra por Monitor espacio de tabulacion y texto estatico
 Serial.print(humedad);				// muestra por Monitor valor de variable
 Serial.print(" %");				// muestra por Monitor simbolo porcentaje
