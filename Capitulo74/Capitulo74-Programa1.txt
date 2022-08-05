@@ -1,5 +1,5 @@
 /*
-	Capitulo 74 de Arduino desde cero en Español.
+	Capitulo 74 de Arduino desde cero en EspaÃ±ol.
 	Utilizando el IMU incorporado en la placa Nano RP2040 Connect para obtener datos de aceleracion lineal y velocidad
 	de rotacion sobre todos los ejes, visualizacion en monitor serie.
 	Requiere instalar libreria: Arduino_LSM6DSOX
