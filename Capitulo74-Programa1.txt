@@ -1,0 +1,60 @@
+/*
+	Capitulo 74 de Arduino desde cero en Español.
+	Utilizando el IMU incorporado en la placa Nano RP2040 Connect para obtener datos de aceleracion lineal y velocidad
+	de rotacion sobre todos los ejes, visualizacion en monitor serie.
+	Requiere instalar libreria: Arduino_LSM6DSOX
+
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+
+#include <Arduino_LSM6DSOX.h>		// incluye libreria del sensor IMU
+
+#define MUESTRAS_POR_SEGUNDO 10		// cantidad de muestras por segundo
+
+void setup() {
+  Serial.begin(9600);			// inicializa monitor serie a 9600 baudios
+
+  while(!Serial);			// espera a que la conexion serie se encuentre disponible
+
+  if (!IMU.begin()) {					// si falla inicializacion de IMU
+    Serial.println("No se pudo inicializar IMU");	// mostrar mensaje de error
+    while (1);						// detener ejecucion del programa
+  }
+}
+
+void loop() {
+  static unsigned long tiempoAnterior = millis();	// valor de referencia anterior con millis()
+  unsigned long tiempoActual = millis();		// valor de referencia actual tambien con millis()
+  if (tiempoActual - tiempoAnterior >= 1000/MUESTRAS_POR_SEGUNDO) {	// si transcurrieron los milisegundos establecidos
+     obtener_datos();					// llamado a funcion obtener_datos()
+     tiempoAnterior = millis();				// actualiza tiempoAnterior con el valor actual de millis()
+  }
+}
+
+void obtener_datos() {				// funcion a medida para obtener y mostrar datos de IMU
+  float Ax, Ay, Az;				// variables para almacenar valores de acelerometro
+  float Gx, Gy, Gz;				// variables para almacenar valores de giroscopo
+
+  if (IMU.accelerationAvailable()) {		// si hay datos validos de acelerometro
+    IMU.readAcceleration(Ax, Ay, Az);		// obtener datos de acelerometro y asignar a respectivas variables
+    Serial.print("Ax: ");			// muestra texto estatico
+    Serial.print(Ax);				// muestra valor de acelerometro en eje X
+    Serial.print("\tAy: ");			// muestra texto estatico con previo espacio de tabulacion
+    Serial.print(Ay);				// muestra valor de acelerometro en eje Y
+    Serial.print("\tAz: ");			// muestra texto estatico con previo espacio de tabulacion
+    Serial.print(Az);				// muestra valor de acelerometro en eje Z
+  }
+
+  if (IMU.gyroscopeAvailable()) {		// si hay datos validos de giroscopo
+    IMU.readGyroscope(Gx, Gy, Gz);		// obtener datos de giroscopo y asignar a respectivas variables
+    Serial.print("\tGx: ");			// muestra texto estatico con previo espacio de tabulacion			
+    Serial.print(Gx);				// muestra valor de giroscopo en eje X
+    Serial.print("\tGy: ");			// muestra texto estatico con previo espacio de tabulacion
+    Serial.print(Gy);				// muestra valor de giroscopo en eje Y
+    Serial.print("\tGz: ");			// muestra texto estatico con previo espacio de tabulacion
+    Serial.println(Gz);				// muestra valor de giroscopo en eje Z con salto del linea
+  }
+}

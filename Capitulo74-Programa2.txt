@@ -1,0 +1,57 @@
+/*
+	Capitulo 74 de Arduino desde cero en Español.
+	Utilizando el IMU incorporado en la placa Nano RP2040 Connect se obtienen datos de aceleracion lineal y velocidad
+	de rotacion sobre todos los ejes, con la libreria Madgwick se convierten a angulos de inclinacion
+	yaw, pitch y roll para luego mostrar en monitor serie.
+	Requiere instalar librerias: Arduino_LSM6DSOX y Madgwick
+
+	https://www.youtube.com/c/BitwiseAr
+	Autor: bitwiseAr  
+
+*/
+
+
+#include <Arduino_LSM6DSOX.h>		// incluye libreria del sensor IMU
+#include <MadgwickAHRS.h>		// incluye libreria Madgwick
+#define MUESTRAS_POR_SEGUNDO 10		// cantidad de muestras por segundo
+
+Madgwick filtro;			// crea objeto de nombre filtro del tipo Madgwick
+
+void setup() {
+  Serial.begin(9600);			// inicializa monitor serie a 9600 baudios
+
+  while(!Serial);			// espera a que la conexion serie se encuentre disponible
+
+  if (!IMU.begin()) {					// si falla inicializacion de IMU
+    Serial.println("No se pudo inicializar IMU");	// mostrar mensaje de error
+    while (1);						// detener ejecucion del programa
+  }
+
+  filtro.begin(MUESTRAS_POR_SEGUNDO);	// inicializa el objeto
+
+}
+
+void loop() {
+  static unsigned long tiempoAnterior = millis();	// valor de referencia anterior con millis()
+  unsigned long tiempoActual = millis();		// valor de referencia actual tambien con millis()
+  if (tiempoActual - tiempoAnterior >= 1000/MUESTRAS_POR_SEGUNDO) {	// si transcurrieron los milisegundos establecidos
+     obtener_angulos();					// llamado a funcion obtener_angulos()
+     tiempoAnterior = millis();				// actualiza tiempoAnterior con el valor actual de millis()
+  }
+}
+
+void obtener_angulos() {
+   float ax, ay, az;			// variables para almacenar valores de acelerometro
+   float gx, gy, gz; 			// variables para almacenar valores de giroscopo
+   if (IMU.accelerationAvailable() && IMU.gyroscopeAvailable()			// si hay datos validos se asignan a
+      && IMU.readAcceleration(ax, ay, az) && IMU.readGyroscope(gx, gy, gz)) {	// sus respectivas variables
+      filtro.updateIMU(gx, gy, gz, ax, ay, az);		// funcion para pasarle al filtro los valores obtenidos
+      							// de acelerometro y giroscopo y realice sus calculos de ypr
+      Serial.print("Yaw = ");  			// muestra texto estatico
+      Serial.print(filtro.getYaw()); 		// muestra el valor devuelto por la funcion getYaw()
+      Serial.print("\tPitch = ");  		// muestra texto estatico con previo espacio de tabulacion
+      Serial.print(filtro.getPitch()); 		// muestra el valor devuelto por la funcion getPitch()
+      Serial.print("\tRoll = ");  		// muestra texto estatico con previo espacio de tabulacion
+      Serial.println(filtro.getRoll()); 	// muestra el valor devuelto por la funcion getRoll() y salto de linea
+   }
+}
