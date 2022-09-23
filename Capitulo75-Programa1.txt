@@ -1,0 +1,99 @@
+/*
+	Capitulo 75 de Arduino desde cero en Español.
+	Programa que permite comandar el LED RGB incorporado en la placa Nano 33 BLE Sense mediante una App
+	en teléfono móvil.
+	Requiere instalar libreria: ArduinoBLE
+
+	Codigo original: https://docs.arduino.cc/tutorials/nano-33-ble-sense/bluetooth
+	
+	Traducido por: bitwiseAr  
+	https://www.youtube.com/c/BitwiseAr
+
+*/
+
+#include <ArduinoBLE.h>			// incluye libreria para comunicacion por Bluetooth LE
+
+BLEService ServicioLED("180A");		// crea un servicio ServicioLED con UUID de 180A
+
+BLEByteCharacteristic CaracteristicaColor("2A57", BLERead | BLEWrite);	// crea caracteristica de nombre CaracteristicaColor
+									// con UUID de 2A47 para lectura y escritura
+void setup() {
+  Serial.begin(9600);			// inicializa monitor serie a 9600 baudios
+  while (!Serial);			// espera a la inicializacion correcta del monitor serie
+
+  pinMode(LEDR, OUTPUT);		// componente rojo de LED RGB incorporado como salida
+  pinMode(LEDG, OUTPUT);		// componente verde de LED RGB incorporado como salida
+  pinMode(LEDB, OUTPUT);		// componente azul de LED RGB incorporado como salida
+  pinMode(LED_BUILTIN, OUTPUT);		// LED L incorporado como salida
+  
+  digitalWrite(LED_BUILTIN, LOW);	// LED L apagado
+  digitalWrite(LEDR, HIGH);		// componente rojo apagado
+  digitalWrite(LEDG, HIGH);		// componente verde apagado
+  digitalWrite(LEDB, HIGH);		// componente azul apagado
+
+  if (!BLE.begin()) {			// si la inicializacion de Bluetooth LE falla
+    Serial.println("Fallo en inicio de Bluetooth LE");	// muestra texto por monitor serie
+    while (1);				// espera infinitamente
+  }
+
+  BLE.setLocalName("Nano 33 BLE Sense");	// nombre para el dispositivo
+  BLE.setAdvertisedService(ServicioLED);	// establece el nombre del servicio a difundir
+
+  ServicioLED.addCharacteristic(CaracteristicaColor);	// agrega la caracteristica al servicio
+
+  BLE.addService(ServicioLED);			// agrega el servicio
+
+  CaracteristicaColor.writeValue(0);		// inicia la caracteristica con un valor de 0
+
+  BLE.advertise();				// inicia la difusion
+
+  Serial.println("Inicio de periferico");	// muestra texto por monitor serie
+}
+
+void loop() {
+  BLEDevice central = BLE.central();		// crea un objeto central para recibir datos
+
+  if (central) {				// si se conecta un central
+    Serial.print("Conectado a central: ");	// muestra texto por monitor serie
+    Serial.println(central.address());		// muestra direccion del central conectado
+    digitalWrite(LED_BUILTIN, HIGH);		// enciende LED L
+
+    while (central.connected()) {			// mientras que el central este conectado
+      if (CaracteristicaColor.written()) {		// si el central escribe un valor
+        switch (CaracteristicaColor.value()) {		// conmuta segun el caso
+          case 01:					// si se recibe un 1
+            Serial.println("LED rojo encendido");	// muestra texto por monitor serie
+            digitalWrite(LEDR, LOW);			// enciende componente rojo de LED RGB
+            digitalWrite(LEDG, HIGH);			// apaga componente verde de LED RGB
+            digitalWrite(LEDB, HIGH);			// apaga componente azul de LED RGB
+            break;					// fin del case 1
+          case 02:					// si se recibe un 2
+            Serial.println("LED verde encendido");	// muestra texto por monitor serie
+            digitalWrite(LEDR, HIGH);			// apaga componente rojo de LED RGB
+            digitalWrite(LEDG, LOW);			// enciende componente verde de LED RGB
+            digitalWrite(LEDB, HIGH);			// apaga componente azul de LED RGB
+            break;					// fin de case 2
+          case 03:					// si recibe un 3
+            Serial.println("LED azul encendido");	// muestra texto por monitor serie
+            digitalWrite(LEDR, HIGH);			// apaga componente rojo de LED RGB
+            digitalWrite(LEDG, HIGH);			// apaga componente verde de LED RGB
+            digitalWrite(LEDB, LOW);			// enciende componente azul de LED RGB
+            break;					// fin de case 3
+          default:					// cualquier otro valor no especificado en los case
+            Serial.println("LEDs apagados");		// muestra texto por monitor serie
+            digitalWrite(LEDR, HIGH);			// apaga componente rojo de LED RGB
+            digitalWrite(LEDG, HIGH);			// apaga componente verde de LED RGB
+            digitalWrite(LEDB, HIGH);			// apaga componente azul de LED RGB
+            break;					// fin de default
+        }
+      }
+    }
+
+    Serial.print("Desconectado de central: ");		// muestra texto al desconectarse el central
+    Serial.println(central.address());			// muestra direccion del central desconectado
+    digitalWrite(LED_BUILTIN, LOW);			// apaga LED L
+    digitalWrite(LEDR, HIGH);				// apaga componente rojo de LED RGB
+    digitalWrite(LEDG, HIGH);				// apaga componente verde de LED RGB
+    digitalWrite(LEDB, HIGH);				// apaga componente azul de LED RGB
+  }
+}
