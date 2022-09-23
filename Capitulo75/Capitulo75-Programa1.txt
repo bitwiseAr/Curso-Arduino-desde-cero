@@ -1,7 +1,7 @@
 /*
-	Capitulo 75 de Arduino desde cero en Español.
+	Capitulo 75 de Arduino desde cero en EspaÃ±ol.
 	Programa que permite comandar el LED RGB incorporado en la placa Nano 33 BLE Sense mediante una App
-	en teléfono móvil.
+	en telÃ©fono mÃ³vil.
 	Requiere instalar libreria: ArduinoBLE
 
 	Codigo original: https://docs.arduino.cc/tutorials/nano-33-ble-sense/bluetooth
