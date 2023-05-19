@@ -1,5 +1,5 @@
 /*
-	Capitulo 77 de Arduino desde cero en Español.
+	Capitulo 77 de Arduino desde cero en EspaÃ±ol.
 	Programa que enciende y apaga LED incorporado en placa Arduino UNO (16 Mhz) mediante el uso
 	de interrupciones por Timer.
 	
