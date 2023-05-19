@@ -1,0 +1,28 @@
+/*
+	Capitulo 77 de Arduino desde cero en Español.
+	Programa que enciende y apaga LED incorporado en placa Arduino UNO (16 Mhz) mediante el uso
+	de interrupciones por Timer.
+	
+	Autor: bitwiseAr  
+	https://www.youtube.com/c/BitwiseAr
+
+*/
+
+void setup() {
+ pinMode(13, OUTPUT);     	// pin 13 como salida para LED incorporado
+ noInterrupts();          	// detiene interrupciones
+ TCCR1A = 0;              	// reset de registro de control A de Timer 1
+ TCCR1B = 0;              	// reset de registro de control B de Timer 1
+ TCCR1B |= B00000100;     	// bit CS12 para activar prescaler a 256
+ TIMSK1 |= B00000010;     	// bit OCIE1 para indicar a OCR1A para la comparacion
+ OCR1A = 31250;           	// valor calculado que genera la interrupcion cada 500 ms.
+ interrupts();            	// vuelve a habilitar las interrupciones
+}
+void loop() {
+ // nada por aqui
+}
+
+ISR(TIMER1_COMPA_vect){                 // funcion ISR
+ TCNT1 = 0;                             // Timer 1 a cero
+ digitalWrite(13,!digitalRead(13));     // enciende/apaga LED incorporado
+}
