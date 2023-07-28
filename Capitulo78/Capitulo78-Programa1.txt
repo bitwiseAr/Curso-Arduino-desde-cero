@@ -1,5 +1,5 @@
 /*
-	Capitulo 78 de Arduino desde cero en Español.
+	Capitulo 78 de Arduino desde cero en EspaÃ±ol.
 	Programa para obtener el factor de escala en base a un peso conocido. Con el valor 
 	obtenido se divide por el peso colocado (en gramos) y aplicar en el segundo programa.
 	Requiere libreria: HX711 Arduino Library de Bogdan
