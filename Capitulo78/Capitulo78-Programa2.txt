@@ -1,5 +1,5 @@
 /*
-	Capitulo 78 de Arduino desde cero en Español.
+	Capitulo 78 de Arduino desde cero en EspaÃ±ol.
 	Implementacion de una balanza con el factor de escala obtenido del primer programa.
 	Requiere libreria: HX711 Arduino Library de Bogdan
 
