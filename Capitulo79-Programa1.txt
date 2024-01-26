@@ -1,0 +1,58 @@
+/*
+	Capitulo 79 de Arduino desde cero en Español.
+	Programa que permite controlar sentido de giro y velocidad de un motor unipolar 28BYJ-48
+	mediante un potenciómetro.
+
+	Autor: bitwiseAr  
+	https://www.youtube.com/c/BitwiseAr
+
+*/
+
+#include <Stepper.h>		// incluye libreria Stepper incorporada en IDE
+
+#define PASOS 32		// reemplaza toda ocurrencia de PASOS por 32
+ 
+#define IN1 8			// reemplaza toda ocurrencia de IN1 por 8
+#define IN2 9			// reemplaza toda ocurrencia de IN2 por 9
+#define IN3 10			// reemplaza toda ocurrencia de IN3 por 10
+#define IN4 11			// reemplaza toda ocurrencia de IN4 por 11
+
+#define REPOSO_SUPERIOR 524	// reemplaza toda ocurrencia de REPOSO_SUPERIOR por 524
+#define REPOSO_INFERIOR 500	// reemplaza toda ocurrencia de REPOSO_INFERIOR por 500
+
+int POT;			// variable para almacenar el valor leído del potenciómetro
+
+Stepper motor(PASOS, IN1, IN3, IN2, IN4);	// crea objeto motor del tipo Stepper pasando los
+ 						// valores para su inicialización
+void setup()
+{
+ 	// al incluir librería Stepper no es necesario establecer como OUTPUT los pines al driver
+	// las entradas analógicas no requieren inicialización 
+}
+ 
+void loop()
+{
+  POT = analogRead(A0);					// lectura de la entrada analógica A0
+  
+  if(POT  > REPOSO_SUPERIOR)				// si el valor es mayor a REPOSO_SUPERIOR
+  {
+    int velocidad  = map(POT, 524, 1023, 5, 500);	// velocidad almacena el valor convertido a rango 5-500 RPM
+    motor.setSpeed(velocidad);				// establece velocidad con la función setSpeed
+    motor.step(1);					// indica realizar un paso en sentido horario
+  }
+ 
+  else if (POT < REPOSO_INFERIOR)			// si el valor es menor a REPOSO_INFERIOR
+  { 
+    int velocidad = map(POT, 500, 0, 5, 500);		// velocidad almacena el valor convertido a rango 5-500 RPM
+    motor.setSpeed(velocidad);				// establece velocidad con la función setSpeed
+    motor.step(-1);					// indica realizar un paso en sentido antihorario
+ 
+  }
+  else 							// a esta condición se llega si se encuentra en zona de reposo
+  {
+    digitalWrite(IN1, LOW);				// nivel bajo LOW a IN1
+    digitalWrite(IN2, LOW);				// nivel bajo LOW a IN2
+    digitalWrite(IN3, LOW);				// nivel bajo LOW a IN3
+    digitalWrite(IN4, LOW);				// nivel bajo LOW a IN4
+  }
+}
