@@ -3,7 +3,7 @@
 	Visualizacion por monitor serie de las lecturas del MPU6050 para yaw, pitch y roll.
 	Intercala texto si el pitch es mayor a 10 grados o menor a -10 grados a modo de ejemplo
 	para tomar una accion.
-	Requiere librerias I2cdev y Simple_MPU6050
+	Requiere librerias I2cdev, Simple_MPU6050 y Simple_Wire
 
 	Codigo basado en el programa de ejemplo incluido en la libreria Simple_MPU6050
 
