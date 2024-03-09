@@ -28,7 +28,6 @@ void setup() {
 void loop() {
   Serial.print("Valor (gramos): ");		// texto descriptivo
   Serial.println(celda.get_units(10), 1);	// muestra el valor obtenido promedio de 10 lecturas
-
   celda.power_down();				// apaga el modulo HX711
   delay(3000);					// demora de 3 segundos
   celda.power_up();				// despierta al modulo HX711
