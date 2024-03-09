@@ -19,7 +19,7 @@ void setup() {
  interrupts();            	// vuelve a habilitar las interrupciones
 }
 void loop() {
- // nada por aqui
+ 	// nada por aqui
 }
 
 ISR(TIMER1_COMPA_vect){                 // funcion ISR
