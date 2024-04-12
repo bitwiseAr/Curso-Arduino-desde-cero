@@ -1,5 +1,5 @@
 /*
-	Capitulo 80 de Arduino desde cero en Español.
+	Capitulo 80 de Arduino desde cero en EspaÃ±ol.
 	Programa que enciende un LED verde a intervalos de un segundo usando delay() y con la presion
 	de un pulsador enciende un LED rojo. Ejemplifica el problema de usar codigo con bloqueo como
 	es el delay() que detiene el flujo del programa.
