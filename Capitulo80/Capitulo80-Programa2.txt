@@ -1,5 +1,5 @@
 /*
-	Capitulo 80 de Arduino desde cero en Español.
+	Capitulo 80 de Arduino desde cero en EspaÃ±ol.
 	Programa que enciende un LED verde a intervalos de un segundo usando millis() como ejemplo
 	de codigo sin bloqueo. Permite la lectura del estado del pulsador sin inconvenientes
 	de forma inmediata.
