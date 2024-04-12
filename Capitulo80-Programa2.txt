@@ -1,0 +1,38 @@
+/*
+	Capitulo 80 de Arduino desde cero en Español.
+	Programa que enciende un LED verde a intervalos de un segundo usando millis() como ejemplo
+	de codigo sin bloqueo. Permite la lectura del estado del pulsador sin inconvenientes
+	de forma inmediata.
+
+	Autor: bitwiseAr  
+	https://www.youtube.com/@BitwiseAr
+
+*/
+
+#define LED_VERDE 2			// LED verde en pin digital 2
+#define LED_ROJO 3			// LED rojo en pin digital 3
+#define PULSADOR 4			// Pulsador en pin digital 4
+
+unsigned long tiempoAnterior = 0;	// variable para almacenar un tiempo inicial
+
+void setup() {
+  pinMode(LED_VERDE, OUTPUT);		// pin establecido como salida
+  pinMode(LED_ROJO, OUTPUT);		// pin establecido como salida
+  pinMode(PULSADOR, INPUT_PULLUP);	// pin establecido como entrada con resistencia de pull-up
+}
+
+void loop() {
+  unsigned long tiempoActual = millis();	// variable para almacenar valor devuelto por millis()
+
+  if (tiempoActual - tiempoAnterior >= 1000){	// si diferencia entre tiempoActual y tiempoAnterior es mayor o igual a 1000
+    digitalWrite(LED_VERDE, !digitalRead(LED_VERDE));	// enciende/apaga LED verde
+    tiempoAnterior = tiempoActual;			// actualiza tiempoAnterior con valor de tiempoActual
+  }
+
+  if(digitalRead(PULSADOR) == LOW){			// si el pulsador de ha presionado
+    digitalWrite(LED_ROJO, HIGH);			// enciende LED rojo
+  }
+  else{
+    digitalWrite(LED_ROJO, LOW);			// si no se ha presionado apaga LED rojo
+  }
+}

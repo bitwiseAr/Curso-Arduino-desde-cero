@@ -1,0 +1,68 @@
+/*
+	Capitulo 80 de Arduino desde cero en Español.
+	Programa que enciende un LED verde a intervalos de un segundo, LED rojo de tres segundos, la presion 
+	del pulsador desactiva temporizador asociado a LED rojo.
+	Establece hora y fecha iniciales para el RTC incorporado y muestra por monitor serie el horario
+	cada un segundo.
+	Establece una alarma diaria a las 15 hs con impresion de mensaje por monitor serie.
+
+	Requiere librerias: TimerAlarms y Timelib
+	
+	Autor: bitwiseAr  
+	https://www.youtube.com/@BitwiseAr
+
+*/
+
+#include <TimeLib.h>			// incluye libreria TimeLib
+#include <TimeAlarms.h>			// incluye libreria TimeAlarms
+
+#define LED_VERDE 2			// LED verde en pin digital 2
+#define LED_ROJO 3			// LED rojo en pin digital 3
+#define PULSADOR 4			// Pulsador en pin digital 4
+
+AlarmId id1, id2, id3;			// crea tres variables del tipo AlarmId
+
+void setup() {
+  pinMode(LED_VERDE, OUTPUT);		// pin establecido como salida
+  pinMode(LED_ROJO, OUTPUT);		// pin establecido como salida
+  pinMode(PULSADOR, INPUT_PULLUP);	// pin establecido como entrada con resistencia de pull-up
+
+  setTime(14,55,0,6,4,24);		// establece horario y fecha iniciales para el RTC incorporado
+  Serial.begin(9600);			// inicializa monitor serie a 9600 baudios
+
+  id1 = Alarm.timerRepeat(1, ledVerdeParpadeo);	// crea temporizador de 1 seg. con llamado a funcion ledVerdeParpadeo
+  id2 = Alarm.timerRepeat(3, ledRojoParpadeo);	// crea temporizador de 3 seg. con llamado a funcion ledRojoParpadeo
+  id3 = Alarm.alarmRepeat(15,0,0, alarma15hs);	// crea alarma diaria a las 15 hs. con llamado a funcion alarma15hs
+}
+
+void loop() {
+  if(digitalRead(PULSADOR) == LOW){			// si el pulsador de ha presionado
+    Alarm.disable(id2);					// desactiva temporizador asociado a id2
+  }
+  Serial.print(hour());					// muestra hora
+  mostrarDigitos(minute());				// llamado a funcion para mostrar minutos
+  mostrarDigitos(second());				// llamado a funcion para mostrar segundos
+  Serial.println();					// salto de linea
+
+  Alarm.delay(1000);					// funcion de llamado periodico requerido por la libreria
+}							// para controlar los temporizadores con demora de 1 seg.
+
+void ledVerdeParpadeo() {				// funcion llamada por temporizador de 1 segundo
+  digitalWrite(LED_VERDE, !digitalRead(LED_VERDE));	// enciende/apaga LED verde
+}
+
+void ledRojoParpadeo() {				// funcion llamada por temporizador de 3 segundos
+  digitalWrite(LED_ROJO, !digitalRead(LED_ROJO));	// enciende/apaga LED rojo
+}
+
+void alarma15hs() {					// funcion llamada por alarma establecida a las 15 hs.
+  Serial.println("Alarma diaria de las 15 hs.");	// muestra texto por monitor serie
+}
+
+void mostrarDigitos(int digitos) {			// funcion para dar formato a minutos y segundos
+  Serial.print(":");					// imprime dos puntos a modo de separador
+  if (digitos < 10){					// si el valor recibido es menor a 10
+    Serial.print("0");					// imprime un cero
+  }
+  Serial.print(digitos);				// imprime valor recibido
+}

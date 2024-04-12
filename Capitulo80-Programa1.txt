@@ -1,0 +1,32 @@
+/*
+	Capitulo 80 de Arduino desde cero en Español.
+	Programa que enciende un LED verde a intervalos de un segundo usando delay() y con la presion
+	de un pulsador enciende un LED rojo. Ejemplifica el problema de usar codigo con bloqueo como
+	es el delay() que detiene el flujo del programa.
+
+	Autor: bitwiseAr  
+	https://www.youtube.com/@BitwiseAr
+
+*/
+
+#define LED_VERDE 2			// LED verde en pin digital 2
+#define LED_ROJO 3			// LED rojo en pin digital 3
+#define PULSADOR 4			// Pulsador en pin digital 4
+
+void setup() {
+  pinMode(LED_VERDE, OUTPUT);		// pin establecido como salida
+  pinMode(LED_ROJO, OUTPUT);		// pin establecido como salida
+  pinMode(PULSADOR, INPUT_PULLUP);	// pin establecido como entrada con resistencia de pull-up
+}
+
+void loop() {
+  digitalWrite(LED_VERDE, !digitalRead(LED_VERDE));	// enciende/apaga LED aplicando el valor opuesto al leido
+  delay(1000);						// demora de 1 segundo
+
+  if(digitalRead(PULSADOR) == LOW){			// si el pulsador de ha presionado
+    digitalWrite(LED_ROJO, HIGH);			// enciende LED rojo
+  }
+  else{
+    digitalWrite(LED_ROJO, LOW);			// si no se ha presionado apaga LED rojo
+  }
+}

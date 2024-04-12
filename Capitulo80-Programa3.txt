@@ -1,0 +1,43 @@
+/*
+	Capitulo 80 de Arduino desde cero en Español.
+	Programa que enciende un LED verde a intervalos de un segundo y LED rojo de tres segundos.
+	La presion del pulsador desactiva temporizador asociado a LED rojo.
+	Requiere librerias: TimerAlarms y Timelib
+	
+	Autor: bitwiseAr  
+	https://www.youtube.com/@BitwiseAr
+
+*/
+
+#include <TimeLib.h>			// incluye libreria TimeLib
+#include <TimeAlarms.h>			// incluye libreria TimeAlarms
+
+#define LED_VERDE 2			// LED verde en pin digital 2
+#define LED_ROJO 3			// LED rojo en pin digital 3
+#define PULSADOR 4			// Pulsador en pin digital 4
+
+AlarmId id1, id2;			// crea dos variables del tipo AlarmId
+
+void setup() {
+  pinMode(LED_VERDE, OUTPUT);		// pin establecido como salida
+  pinMode(LED_ROJO, OUTPUT);		// pin establecido como salida
+  pinMode(PULSADOR, INPUT_PULLUP);	// pin establecido como entrada con resistencia de pull-up
+
+  id1 = Alarm.timerRepeat(1, ledVerdeParpadeo);	// crea temporizador de 1 seg. con llamado a funcion ledVerdeParpadeo
+  id2 = Alarm.timerRepeat(3, ledRojoParpadeo);	// crea temporizador de 3 seg. con llamado a funcion ledRojoParpadeo
+}
+
+void loop() {
+  if(digitalRead(PULSADOR) == LOW){			// si el pulsador de ha presionado
+    Alarm.disable(id2);					// desactiva temporizador asociado a id2
+  }
+  Alarm.delay(0);					// funcion de llamado periodico requerido por la libreria
+}							// para controlar los temporizadores
+
+void ledVerdeParpadeo() {				// funcion llamada por temporizador de 1 segundo
+  digitalWrite(LED_VERDE, !digitalRead(LED_VERDE));	// enciende/apaga LED verde
+}
+
+void ledRojoParpadeo() {				// funcion llamada por temporizador de 3 segundos
+  digitalWrite(LED_ROJO, !digitalRead(LED_ROJO));	// enciende/apaga LED rojo
+}
