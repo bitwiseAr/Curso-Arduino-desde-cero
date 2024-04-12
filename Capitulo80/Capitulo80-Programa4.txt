@@ -1,5 +1,5 @@
 /*
-	Capitulo 80 de Arduino desde cero en Español.
+	Capitulo 80 de Arduino desde cero en EspaÃ±ol.
 	Programa que enciende un LED verde a intervalos de un segundo, LED rojo de tres segundos, la presion 
 	del pulsador desactiva temporizador asociado a LED rojo.
 	Establece hora y fecha iniciales para el RTC incorporado y muestra por monitor serie el horario
