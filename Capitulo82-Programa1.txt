@@ -1,0 +1,33 @@
+/*
+	Capitulo 82 de Arduino desde cero en Español.
+	Lectura de RPM de ventiladores BLDC de tres conductores que generan dos pulsos por revolución.
+	Las RPM se muestran en monitor serie.
+
+	Autor: bitwiseAr  
+	https://www.youtube.com/@BitwiseAr
+
+*/
+
+volatile unsigned long contador = 0;	// variable almacena pulsos del ventilador
+unsigned long tiempoAnterior = 0;	// variable para determinar si han transcurrido 1 segundo
+
+void setup() {
+  Serial.begin(9600);			// inicializa monitor serie a 9600 bps
+  attachInterrupt(digitalPinToInterrupt(2), contadorPulsosISR, FALLING);	// interrupción sobre pin 2
+}
+
+void loop() {
+  unsigned long tiempoActual = millis();		// tiempo transcurrido actual obtenido con millis() 
+  if (tiempoActual - tiempoAnterior >= 1000){		// si han transcurrido 1000 ms.
+    unsigned long rpm = contador * 60 / 2;		// a rpm se asigna contador pasado a minutos y divido por dos
+    Serial.print("RPM:");				// texto estático por monitor serie
+    Serial.println(rpm);				// valor de la variable rpm por monitor serie
+    contador = 0;					// contador a cero
+    tiempoAnterior = tiempoActual;			// actualiza tiempo anterior con tiempo actual
+  }
+
+}
+
+void contadorPulsosISR() {		// función ISR
+  contador ++;				// incrementa contador en 1
+}
