@@ -1,0 +1,87 @@
+/*
+	Mini Proyecto Raspberry Pi Pico 2W + DHT22 Servidor Web.
+	Hacemos la lectura de temperatura y humedad de un sensor DHT22 para mostrar en una página web
+	mediante servidor web corriendo en la Raspberry Pi Pico 2W.
+	Explicación línea por línea: https://www.youtube.com/watch?v=8xxSg3SOUwA
+
+	Autor: bitwiseAr  
+	Canal: https://www.youtube.com/@BitwiseAr
+
+*/
+
+#include <WiFi.h>
+#include <DHT.h>
+
+#define DHTPIN 15 
+#define DHTMODELO DHT22
+DHT dht(DHTPIN, DHTMODELO);
+
+const char* ssid = "tu_SSID";
+const char* password = "tu_PASSWORD";
+
+WiFiServer server(80);
+
+float temperatura = 0;
+float humedad = 0;
+
+unsigned long tiempoAnterior = 0;
+const long intervalo = 5000;
+
+void setup() {
+  Serial.begin(115200);
+  dht.begin(); 
+  
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Conectando a WiFi");
+  }
+  Serial.println("Conectado correctamente");
+  Serial.print("IP: ");
+  Serial.println(WiFi.localIP());
+  
+  server.begin();
+}
+
+void loop() {
+  unsigned long tiempoActual = millis();
+  if (tiempoActual - tiempoAnterior >= intervalo) {
+    temperatura = dht.readTemperature();
+    humedad = dht.readHumidity();
+    tiempoAnterior = tiempoActual;
+  }
+  
+  WiFiClient cliente = server.accept();
+  if (cliente) {
+    String lineaActual = "";
+    while (cliente.connected()) {
+      if (cliente.available()) {
+        char c = cliente.read();
+        if (c == '\n' && lineaActual.length() == 0) {	
+          cliente.println("HTTP/1.1 200 OK");
+          cliente.println("Content-Type: text/html");
+          cliente.println();
+          cliente.println("<html>");
+          cliente.println("<head>");
+          cliente.println("<meta http-equiv=\"refresh\" content=\"10\">");
+          cliente.println("</head>");
+          cliente.println("<body>");
+          cliente.print("<h1>Temperatura: ");
+          cliente.print(temperatura, 1);
+          cliente.println(" &deg;C</h1>");
+          cliente.print("<h1>Humedad: ");
+          cliente.print(humedad, 1); 
+          cliente.println(" %</h1>");
+          cliente.println("</body>");
+          cliente.println("</html>");
+          break; 
+        } else if (c == '\n') {	
+          lineaActual = "";
+        } else if (c != '\r') {
+          lineaActual += c;
+        }
+      }
+    }
+    cliente.stop();
+  }
+}
