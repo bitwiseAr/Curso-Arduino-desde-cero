@@ -1,0 +1,25 @@
+/*
+	Capitulo 86 de Arduino desde cero en Español.
+	Lectura de los valores reportados por cada uno de los 4 pulsadores conectados a la entrada A0
+	mediante el uso de divisores de tensión. Dichos valores se aplicarán luego en el segundo programa
+	para tomar una simple acción.
+
+	Autor: bitwiseAr  
+	https://www.youtube.com/@BitwiseAr
+
+*/
+
+int valorBoton = 0;		// variable para almacenar valor leído de entrada A0
+
+void setup()
+{
+  Serial.begin(9600);		// inicialización de monitor serie a 9600 baudios
+}
+
+void loop()
+{
+  valorBoton = analogRead(A0);	// lectura de entrada A0 y asignación a variable
+  Serial.println(valorBoton);	// muestra por monitor serie el valor
+  
+  delay(500);			// demora de 500 milisegundos
+}
